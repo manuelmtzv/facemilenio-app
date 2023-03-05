@@ -9,7 +9,17 @@
 </head>
 
 <body>
+  <nav>
+    <h1>Logo</h1>
+
+    <div>
+      <a href="#">Home</a>
+    </div>
+  </nav>
+
   @yield('content')
+
+
 </body>
 
 </html>
