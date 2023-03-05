@@ -11,10 +11,9 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('locations', function (Blueprint $table) {
-      $table->id()->comment("Unique location identifier");
-      $table->foreignId("city_id")->constrained("cities")->onDelete("cascade")->onDelete("cascade");
-      $table->foreignId("country_id")->constrained("countries")->onDelete("cascade")->onDelete("cascade");
+    Schema::create('countries', function (Blueprint $table) {
+      $table->id()->comment("Unique country identifier");
+      $table->string("name")->comment("Name of the country");
       $table->string("notes")->nullable()->comment("Notes");
       $table->boolean("is_active")->default(1)->comment("Shows if it's active");
       $table->timestamps();
@@ -26,6 +25,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('locations');
+    Schema::dropIfExists('countries');
   }
 };

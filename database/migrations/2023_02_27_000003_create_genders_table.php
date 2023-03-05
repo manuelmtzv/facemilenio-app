@@ -12,8 +12,10 @@ return new class extends Migration
   public function up(): void
   {
     Schema::create('genders', function (Blueprint $table) {
-      $table->id();
-      $table->string("name");
+      $table->id()->comment("Unique gender identifier");
+      $table->string("name")->comment("Name of the gender");
+      $table->string("notes")->nullable()->comment("Notes");
+      $table->boolean("is_active")->default(1)->comment("Shows if it's active");
       $table->timestamps();
     });
   }

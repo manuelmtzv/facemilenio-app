@@ -12,8 +12,10 @@ return new class extends Migration
   public function up(): void
   {
     Schema::create('activities', function (Blueprint $table) {
-      $table->id();
-      $table->tinyText("notes");
+      $table->id()->comment("Unique activity identifier");
+      $table->tinyText("content")->comment("Text content of the post");
+      $table->string("notes")->nullable()->comment("Notes");
+      $table->boolean("is_active")->default(1)->comment("Shows if it's active");
       $table->timestamps();
     });
   }

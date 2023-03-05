@@ -12,11 +12,13 @@ return new class extends Migration
   public function up(): void
   {
     Schema::create('friends', function (Blueprint $table) {
-      $table->id();
+      $table->id()->comment("Unique friends relation identifier");
       $table->foreignId("user_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
       $table->foreignId("friend_id")->constrained("users")->onDelete("cascade")->onUpdate("cascade");
-      $table->boolean("is_acepted");
-      $table->boolean("is_requested");
+      $table->boolean("is_requested")->comment("Shows if the friend request has been placed");
+      $table->boolean("is_acepted")->comment("Shows if the friend request has been accepted");
+      $table->string("notes")->nullable()->comment("Notes");
+      $table->boolean("is_active")->default(1)->comment("Shows if it's active");
       $table->timestamps();
     });
   }
