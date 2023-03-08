@@ -6,6 +6,7 @@ $font: 'Inter', sans-serif;
 // Colors
 $gray: #D9D9D9;
 $dark: #2C3333;
+$light-blue: #9FBBE4;
 
 // Screen sizes
 $phone: 480px; 
@@ -179,11 +180,21 @@ img {
   }
 
   &__form {
-    @include container(60rem, 100%);
+    @include container(60rem, 100%);        
 
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
+    padding: 4.4rem 0;
+    background-color: $gray
+  }
+
+  &__container {
+    @include container(40rem, 90%);
+    
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
   }
 
   &__input {
@@ -196,7 +207,10 @@ img {
   }
 
   &__submit {
+    @include container(26rem, 80%);
+
     padding: 1rem;
+    background-color: $light-blue;
   }
 }
 

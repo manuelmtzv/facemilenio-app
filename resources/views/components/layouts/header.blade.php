@@ -3,8 +3,8 @@
     <h1 class="header__logo">Facemilenio</h1>
 
     <nav class="header__nav">
-      <a href="#">Landing</a>
-      <a href="#">Login</a>
+      <a href="{{ route('landing') }}">Landing</a>
+      <a href="{{ route('auth.login') }}">Login</a>
       <a href="#">Signup</a>
     </nav>
   </div>
