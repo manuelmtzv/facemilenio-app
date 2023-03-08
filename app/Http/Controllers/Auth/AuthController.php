@@ -9,7 +9,14 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
+  public function showLoginForm()
+  {
+    return view('auth.login');
+  }
 
+  public function showRegistrationForm()
+  {
+  }
 
   public function register(Request $req)
   {
@@ -43,7 +50,7 @@ class AuthController extends Controller
   {
   }
 
-  public function logout(Request $req)
+  public function logout()
   {
   }
 }

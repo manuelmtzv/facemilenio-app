@@ -1,15 +1,19 @@
-<x-layouts.app>
-  <div class="login">
-    <form action="#">
-      <label for="email">
+<x-layouts.app title="Login" meta-description="Login meta description">
+  <div class="login container">
+    <form class="login__form" action="#">
+      <h2 class="login__title">Login</h2>
+
+      <label class="login__input login__input--email" for="email">
+        Email
         <input id="email" name="email" type="email">
       </label>
 
-      <label for="password">
+      <label class="login__input login__input--password" for="password">
+        Password
         <input id="password" name="password" type="password">
       </label>
 
-      <button type="submit">Login</button>
+      <button class="login__submit" type="submit">Login</button>
     </form>
   </div>
 </x-layouts.app>

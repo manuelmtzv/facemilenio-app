@@ -64,6 +64,11 @@ $large-desktop: 1200px;
   list-style: none;
 }
 
+@mixin container($min-w, $min-percentage) {
+  width: min($min-w, $min-percentage);
+  margin: 0 auto; 
+}
+
 // - Global styles --
 
 // Globals
@@ -75,6 +80,7 @@ html {
 *  {
   padding: 0;
   margin: 0;
+  font-family: $font;
 }
 
 *, *::before, *::after {
@@ -85,8 +91,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
-  font-family: $font;
+  
   font-size: 1.6rem;  
 }
 
@@ -106,12 +111,12 @@ img {
 }
 
 .container {
-  width: min(120rem, 90%);
-  margin: 0 auto; 
+  @include container(120rem, 90%);
 }
 
 
 // - Sections styles -
+
 // Header
 .header {
   padding: 3rem 4rem;
@@ -131,8 +136,6 @@ img {
     gap: 3rem;
   }
 }
-
-
 
 // Landing
 .landing {
@@ -164,6 +167,36 @@ img {
     background-color: $gray;
     width: 100%;
     height: 20rem;
+  }
+}
+
+// Login
+.login {
+  padding: 14rem 0;  
+
+  &__title {
+    text-align: center;
+  }
+
+  &__form {
+    @include container(60rem, 100%);
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__input {
+    width: 100%;
+
+    input {
+      width: inherit;
+      padding: 1rem;
+    }
+  }
+
+  &__submit {
+    padding: 1rem;
   }
 }
 
