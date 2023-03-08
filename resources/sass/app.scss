@@ -136,6 +136,10 @@ img {
     display: inherit;
     gap: 3rem;
   }
+
+  &__logo {
+    font-size: 2.4rem;
+  }
 }
 
 // Landing
@@ -171,8 +175,8 @@ img {
   }
 }
 
-// Login
-.login {
+// Auth views
+.login, .register {
   padding: 14rem 0;  
 
   &__title {
@@ -195,12 +199,12 @@ img {
     display: flex;
     flex-direction: column;
     gap: 3rem;
-  }
+  }  
 
   &__input {
     width: 100%;
 
-    input {
+    input, select, textarea {
       width: inherit;
       padding: 1rem;
     }
@@ -211,6 +215,86 @@ img {
 
     padding: 1rem;
     background-color: $light-blue;
+  }
+}
+
+.register {
+  padding: 7rem 0;
+
+  &__form {
+    @include container(90rem, 100%);    
+    
+    padding: 4.4rem 0;
+  }
+
+  &__container {
+    @include container(80rem, 90%);  
+
+    flex-direction: row;    
+  }
+
+  &__input {
+    &--city {
+      margin-top: auto;
+    }
+
+    &--description {
+      flex: 1;
+
+      textarea {
+        resize: none;
+        height: calc(100% - 18px);
+      }
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    width: 100%;
+  }
+}
+
+// Feed
+.feed {
+  display: flex;
+
+  &__container {
+    @include grid(2, 2rem);
+    grid-template-columns: 1fr 2fr;
+
+    width: 100%;    
+    padding: 6rem 0;
+  }
+
+  &__section {  
+    display: flex;
+    flex-direction: column;
+    gap: 2.7rem;
+  }
+
+  &__notifications, &__following, &__activities {
+    background-color: $gray;
+  }
+
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    gap: 4.2rem;
+  }
+
+  &__notifications {
+    height: 25rem;
+  }
+
+  &__following {
+    height: 25rem;
+  }
+
+  &__activities {
+    flex: 1;
   }
 }
 

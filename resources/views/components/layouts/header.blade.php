@@ -5,7 +5,7 @@
     <nav class="header__nav">
       <a href="{{ route('landing') }}">Landing</a>
       <a href="{{ route('auth.login') }}">Login</a>
-      <a href="#">Signup</a>
+      <a href="{{ route('auth.register') }}">Signup</a>
     </nav>
   </div>
 </header>
