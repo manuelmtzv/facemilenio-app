@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Models\User;
@@ -21,16 +22,22 @@ class AuthController extends Controller
 
   public function register(Request $req)
   {
-    $this->validate($req, [
+    $credentials = $req->validate($req, [
       'username' => 'required|unique:users|max:100',
+      'name' => 'required|max:100',
+      'surname' => 'required|max:100',
       'email' => 'required|unique:users|email|max:100',
       'password' => 'required|max:100|confirmed',
-      'name' => 'required|max:100',
-      // 'surname' => 'required|max:100',
-      // 'gender' => 'required|max:100',
-      // 'birthdate' => 'required|date',
-      // 'biography' => 'required'
+      'gender' => 'required|max:100',
+      'birthdate' => 'required|date',
+      'biography' => 'required',
+      'country' => 'required',
+      'city' => 'required',
     ]);
+
+    // $location = Location::create([
+    //   'city_id' => 
+    // ]);
 
     $user = User::create([
       'name' => $req->name,
