@@ -14,7 +14,9 @@ class CountryController extends Controller
    */
   public function index()
   {
-    //
+    $countries = Country::get();
+
+    return response()->json($countries);
   }
 
   /**
@@ -28,18 +30,16 @@ class CountryController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $req)
+  public function store(Request $request)
   {
-    $this->validate($req, [
+    $this->validate($request, [
       'name' => 'required'
     ]);
 
-    $name = $req->name;
-
-    $country = Country::where('name', $name)->first();
+    $country = Country::where('name', $request->name)->first();
 
     if (!$country) {
-      $country = Country::create(['name' => $name]);
+      $country = Country::create(['name' => $request->name]);
       return response()->json($country);
     }
 
@@ -49,9 +49,13 @@ class CountryController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(Country $country)
   {
-    $country = Country::findOrFail($id);
+    if (!$country) {
+      return response()->json([
+        'message' => 'Not found'
+      ]);
+    }
 
     return response()->json($country);
   }

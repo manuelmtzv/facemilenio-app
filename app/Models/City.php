@@ -13,5 +13,5 @@ class City extends Model
     'name'
   ];
 
-  protected $table = 'countries';
+  protected $table = 'cities';
 }

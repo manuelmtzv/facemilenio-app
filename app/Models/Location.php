@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  protected $fillable = [
+    'country_id',
+    'city_id',
+  ];
 }

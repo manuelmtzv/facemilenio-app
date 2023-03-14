@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('register', [AuthController::class, 'register']);
+Route::post('register/', [AuthController::class, 'register']);
 
-Route::post('country', [CountryController::class, 'store']);
-Route::post('country/{id}', [CountryController::class, 'show']);
+// Country
+Route::get('/country', [CountryController::class, 'index']);
+Route::get('/country/{country}', [CountryController::class, 'show']);
+Route::post('/country', [CountryController::class, 'store']);
