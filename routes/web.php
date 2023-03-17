@@ -8,7 +8,7 @@ use App\Http\Controllers\LocationController;
 use Illuminate\Support\Facades\Route;
 
 // Landing route
-Route::get('/', LandingController::class)->name('landing.index');
+Route::get('/', LandingController::class)->name('landing');
 
 // Register routes
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
