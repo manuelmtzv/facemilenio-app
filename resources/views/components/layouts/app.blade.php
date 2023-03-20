@@ -11,8 +11,6 @@
   <meta
     name="description" content="{{ $metaDescription ?? 'Default meta description' }}">
 
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-
   {{-- Font family --}}
   <link
     href="https://fonts.googleapis.com" rel="preconnect">

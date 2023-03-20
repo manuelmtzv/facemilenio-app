@@ -22,8 +22,9 @@ return new class extends Migration
       $table->foreignId("gender_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
       $table->date("birthdate")->comment("User birthdate");
       $table->tinyText("url_profile")->nullable()->comment("URL of the profile image of the user");
-      $table->tinyText("biography")->comment("User autobiography");
+      $table->longText("biography")->comment("User autobiography");
       $table->foreignId("location_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
+      $table->rememberToken();
       $table->string("notes")->nullable()->comment("Notes");
       $table->boolean("is_active")->default(1)->comment("Shows if it's active");
       $table->timestamps();

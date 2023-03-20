@@ -13,7 +13,6 @@ use App\Models\Country;
 use App\Models\City;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -33,11 +32,11 @@ class RegisterController extends Controller
       'surname' => ['required', 'string'],
       'email' => ['required', 'email', 'unique:users'],
       'password' => ['required', 'string', Rules\Password::defaults()],
-      'country' => ['required'],
-      'city' => ['required'],
-      'gender' => ['required'],
-      'birthdate' => ['required'],
-      'biography' => ['required', 'min:20'],
+      'country' => ['required', 'string'],
+      'city' => ['required', 'string'],
+      'gender' => ['required', 'string'],
+      'birthdate' => ['required', 'string'],
+      'biography' => ['required', 'string'],
     ]);
 
     // Gender
