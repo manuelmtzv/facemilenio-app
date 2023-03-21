@@ -211,6 +211,13 @@ img {
       width: inherit;
       padding: 1rem;
     }
+
+    &--remember {
+      width: auto;
+      display: flex;
+      align-items: center;
+      gap: 2rem
+    }
   }
 
   &__submit {

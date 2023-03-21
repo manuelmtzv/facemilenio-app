@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\Country;
+use App\Http\Requests\SaveLocationRequest;
 use Illuminate\Http\Request;
 
 // Models
@@ -30,20 +31,17 @@ class LocationController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(SaveLocationRequest $request)
   {
-    $values = $request->validate([
-      'country' => ['required', 'string'],
-      'city' => ['required', 'string']
-    ]);
+    $values = $request->validated();
 
     $country = Country::where('name', $values['country'])->firstOrFail();
     $city = City::where('name', $values['city'])->firstOrFail();
 
-    $values['country_id'] = $country->id;
-    $values['city_id'] = $city->id;
-
-    $location = Location::create($values);
+    $location = Location::create([
+      'country_id' => $country->id,
+      'city_id' => $city->id
+    ]);
 
     return $location;
   }

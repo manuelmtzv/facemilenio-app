@@ -4,6 +4,8 @@ namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\LocationController;
+use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\SaveLocationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 
@@ -12,10 +14,16 @@ use App\Models\Gender;
 use App\Models\Country;
 use App\Models\City;
 use App\Models\User;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('guest');
+  }
+
   public function showRegistrationForm()
   {
     $genders = Gender::get();
@@ -25,25 +33,15 @@ class RegisterController extends Controller
     return view('auth.register', compact('genders', 'countries', 'cities'));
   }
 
-  public function register(Request $request)
+  public function register(RegisterRequest $request, SaveLocationRequest $saveLocationRequest, Redirector $redirect)
   {
-    $values = $request->validate([
-      'name' => ['required', 'string'],
-      'surname' => ['required', 'string'],
-      'email' => ['required', 'email', 'unique:users'],
-      'password' => ['required', 'string', Rules\Password::defaults()],
-      'country' => ['required', 'string'],
-      'city' => ['required', 'string'],
-      'gender' => ['required', 'string'],
-      'birthdate' => ['required', 'string'],
-      'biography' => ['required', 'string'],
-    ]);
+    $values = $request->validated();
 
     // Gender
     $gender = Gender::where('name', $values['gender'])->firstOrFail();
 
     // Location
-    $location = app(LocationController::class)->store($request);
+    $location = app(LocationController::class)->store($saveLocationRequest);
 
     // User
     $values['location_id'] = $location->id;
@@ -51,7 +49,7 @@ class RegisterController extends Controller
 
     // Hardcoded testing values (removing later)
     $values['username'] = 'default';
-    $values['role_id'] = '1';
+    $values['role_id'] = 1;
 
     $user = User::create(array_merge($values, [
       'password' => bcrypt($values['password'])
@@ -59,6 +57,8 @@ class RegisterController extends Controller
 
     Auth::login($user);
 
-    return response()->json($user);
+    return $redirect
+      ->route('activity.index')
+      ->with('status', 'You are registered!');
   }
 }

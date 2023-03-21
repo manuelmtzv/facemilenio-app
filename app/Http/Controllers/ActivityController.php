@@ -2,16 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class ActivityController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
-    return view('activities.index');
+    $activities = (Gate::allows('viewIsAdmin', Auth::user(), new Activity()))
+      ? Activity::all()
+      : Activity::where('user_id', Auth::user()->id)->get();
+
+    return view('activities.index', compact('activities'));
   }
 
   /**
