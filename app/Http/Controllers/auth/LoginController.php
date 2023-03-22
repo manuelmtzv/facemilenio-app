@@ -32,7 +32,7 @@ class LoginController extends Controller
 
       // return Auth::user();
       return $redirect
-        ->route('activity.index')
+        ->route('activities.index')
         ->with('status', 'You are logged in!');
     }
 

@@ -4,7 +4,7 @@
 
     <nav class="header__nav">
       @auth
-        <a href="{{ route('activity.index') }}">Home</a>
+        <a href="{{ route('activities.index') }}">Home</a>
         <a href="#">Logout</a>
       @endauth
 

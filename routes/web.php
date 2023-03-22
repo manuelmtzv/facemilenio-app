@@ -22,13 +22,13 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 
 // Activity routes
-Route::resource('activity', ActivityController::class);
+Route::resource('activities', ActivityController::class);
 
 // Friend routes
-Route::resource('friend', FriendController::class);
+Route::resource('friends', FriendController::class);
 
 // Notification routes
-Route::resource('notification', NotificationController::class);
+Route::resource('notifications', NotificationController::class);
 
 // Location
-Route::post('/location', [LocationController::class, 'store'])->name('location.store');
+Route::post('/locations', [LocationController::class, 'store'])->name('location.store');

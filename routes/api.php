@@ -16,10 +16,3 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::post('register/', [AuthController::class, 'register']);
-
-// Country
-Route::get('/country', [CountryController::class, 'index']);
-Route::get('/country/{country}', [CountryController::class, 'show']);
-Route::post('/country', [CountryController::class, 'store']);
