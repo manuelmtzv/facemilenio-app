@@ -21,9 +21,6 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 
-// Feed route
-Route::get('/feed', FeedController::class)->name('feed');
-
 // Activity routes
 Route::resource('activity', ActivityController::class);
 

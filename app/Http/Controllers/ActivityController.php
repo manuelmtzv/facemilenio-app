@@ -19,9 +19,8 @@ class ActivityController extends Controller
    */
   public function index()
   {
-    $activities = (Gate::allows('viewIsAdmin', Auth::user(), new Activity()))
-      ? Activity::all()
-      : Activity::where('user_id', Auth::user()->id)->get();
+    $activities = $this->getAll();
+
 
     return view('activities.index', compact('activities'));
   }
@@ -72,5 +71,14 @@ class ActivityController extends Controller
   public function destroy(string $id)
   {
     //
+  }
+
+  public function getAll()
+  {
+    $activities = (Gate::allows('viewIsAdmin', Auth::user(), new Activity()))
+      ? Activity::all()
+      : Activity::where('user_id', Auth::user()->id)->get();
+
+    return $activities;
   }
 }
