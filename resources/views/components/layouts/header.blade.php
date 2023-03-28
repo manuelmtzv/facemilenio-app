@@ -5,7 +5,11 @@
     <nav class="header__nav">
       @auth
         <a href="{{ route('feed') }}">Home</a>
-        <a href="#">Logout</a>
+
+        <form class="logout" action="{{ route('logout') }}" method="POST">
+          @csrf
+          <button>Logout</button>
+        </form>
       @endauth
 
       @guest

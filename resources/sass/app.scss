@@ -10,6 +10,7 @@ $font: 'Inter', sans-serif;
 $gray: #D9D9D9;
 $dark: #2C3333;
 $light-blue: #9FBBE4;
+$matte-yellow: #FFD966;
 
 // Screen sizes
 $phone: 480px; 
@@ -138,11 +139,18 @@ img {
 
   &__nav {
     display: inherit;
+    align-items: center;
     gap: 3rem;
   }
 
   &__logo {
     font-size: 2.8rem;
+  }
+
+  .logout {
+    button {
+      padding: 1rem;      
+    }
   }
 }
 
