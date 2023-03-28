@@ -16,7 +16,7 @@ return new class extends Migration
       $table->foreignId("user_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
       $table->foreignId("friend_id")->constrained("users")->onDelete("cascade")->onUpdate("cascade");
       $table->boolean("is_requested")->comment("Shows if the friend request has been placed");
-      $table->boolean("is_acepted")->comment("Shows if the friend request has been accepted");
+      $table->boolean("is_accepted")->comment("Shows if the friend request has been accepted");
       $table->string("notes")->nullable()->comment("Notes");
       $table->boolean("is_active")->default(1)->comment("Shows if it's active");
       $table->timestamps();

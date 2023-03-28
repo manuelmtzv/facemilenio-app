@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Friend;
+use App\Models\Activity;
+use App\Models\Notification;
 use Illuminate\Http\Request;
-use App\Http\Controllers\FriendController;
-use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\NotificationController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class FeedController extends Controller
 {
@@ -14,10 +17,30 @@ class FeedController extends Controller
    */
   public function __invoke(Request $request)
   {
-    $notifications = app(NotificationController::class)->index();
-    $friends = app(FriendController::class)->index();
-    $activities = app(ActivityController::class)->index();
+    // Getting the activities
+    $activities = (Gate::allows('viewForAdmin', Auth::user()))
+      ? Activity::all()
+      : Auth::user()->activities;
 
-    return view('feed.index', compact('notifications', 'friends', 'activities'));
+    // Getting the notifications
+    $notifications = (Gate::allows('viewForAdmin', Auth::user()))
+      ? Notification::all()
+      : Auth::user()->notifications;
+
+    // Getting the friends relations
+    $relations = (Gate::allows('viewForAdmin', Auth::user()))
+      ? Friend::all()
+      : Auth::user()->friends;
+
+
+    $friends = collect();
+
+    // Getting friend users
+    foreach ($relations as $relation) {
+      $friend = User::find($relation->friend_id);
+      $friends->push($friend);
+    }
+
+    return view('feed.index', compact('activities', 'friends', 'notifications'));
   }
 }

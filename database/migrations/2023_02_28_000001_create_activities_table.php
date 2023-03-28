@@ -13,7 +13,7 @@ return new class extends Migration
   {
     Schema::create('activities', function (Blueprint $table) {
       $table->id()->comment("Unique activity identifier");
-      $table->tinyText("content")->comment("Text content of the post");
+      $table->longText("content")->comment("Text content of the post");
       $table->foreignId("user_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
       $table->string("notes")->nullable()->comment("Notes");
       $table->boolean("is_active")->default(1)->comment("Shows if it's active");

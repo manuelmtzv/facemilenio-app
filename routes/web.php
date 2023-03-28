@@ -21,14 +21,17 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 
-// Activity routes
-Route::resource('activities', ActivityController::class);
+// Feed route
+Route::get('/feed', FeedController::class)->name('feed');
 
-// Friend routes
-Route::resource('friends', FriendController::class);
+// // Activity routes
+// Route::resource('activities', ActivityController::class);
 
-// Notification routes
-Route::resource('notifications', NotificationController::class);
+// // Friend routes
+// Route::resource('friends', FriendController::class);
 
-// Location
-Route::post('/locations', [LocationController::class, 'store'])->name('location.store');
+// // Notification routes
+// Route::resource('notifications', NotificationController::class);
+
+// // Location
+// Route::post('/locations', [LocationController::class, 'store'])->name('location.store');

@@ -14,11 +14,6 @@ class NotificationController extends Controller
    */
   public function index()
   {
-    $notifications = (Gate::allows('viewIsAdmin', Auth::user(), new Notification))
-      ? Notification::all()
-      : Notification::where('user_id', Auth::user()->id)->get();
-
-    return view('notifications.index', compact('notifications'));
   }
 
   /**

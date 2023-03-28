@@ -14,11 +14,6 @@ class FriendController extends Controller
    */
   public function index()
   {
-    $friends = (Gate::allows('viewIsAdmin', Auth::user(), new Friend))
-      ? Friend::all()
-      : Friend::where('user_id', Auth::user()->id)->get();
-
-    return view('friends.index', compact('friends'));
   }
 
   /**

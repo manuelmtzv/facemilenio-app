@@ -19,10 +19,6 @@ class ActivityController extends Controller
    */
   public function index()
   {
-    $activities = $this->getAll();
-
-
-    return view('activities.index', compact('activities'));
   }
 
   /**

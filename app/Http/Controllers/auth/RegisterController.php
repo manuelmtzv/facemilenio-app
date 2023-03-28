@@ -58,7 +58,7 @@ class RegisterController extends Controller
     Auth::login($user);
 
     return $redirect
-      ->route('activities.index')
+      ->route('feed')
       ->with('status', 'You are registered!');
   }
 }
