@@ -15,7 +15,7 @@ return new class extends Migration
       $table->id()->comment("Unique notification identifier");
       $table->foreignId("notification_type_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
       $table->foreignId("user_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
-      $table->string("notification")->comment("Text content of the notitication");
+      $table->string("content")->comment("Text content of the notitication");
       $table->string("notes")->nullable()->comment("Notes");
       $table->boolean("is_active")->default(1)->comment("Shows if it's active");
       $table->timestamps();

@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Friend;
+use App\Models\RolePermission;
 use Illuminate\Http\Request;
 
-class FriendController extends Controller
+class RolePermissionController extends Controller
 {
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
-    $values = Friend::get();
+    $values = RolePermission::get();
 
     $keys = array_keys($values->first()->toArray());
 
-    return view('friends.index', compact('values', 'keys'));
+    return view('role-permissions.index', compact('values', 'keys'));
   }
 
   /**

@@ -2,23 +2,23 @@
 
 namespace Database\Seeders;
 
-use App\Models\Country;
+use App\Models\NotificationType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CountrySeeder extends Seeder
+class NotificationTypeSeeder extends Seeder
 {
   /**
    * Run the database seeds.
    */
   public function run(): void
   {
-    Country::create([
-      'name' => 'México'
+    NotificationType::create([
+      'name' => 'Activity posted',
     ]);
 
-    Country::create([
-      'name' => 'España'
+    NotificationType::create([
+      'name' => 'Friend Request'
     ]);
   }
 }

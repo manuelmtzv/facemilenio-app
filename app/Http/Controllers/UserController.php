@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,7 +12,11 @@ class UserController extends Controller
    */
   public function index()
   {
-    //
+    $values = User::get();
+
+    $keys = array_keys($values->first()->toArray());
+
+    return view('users.index', compact('values', 'keys'));
   }
 
   /**

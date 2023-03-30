@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use Illuminate\Http\Request;
 
-use function PHPUnit\Framework\isNull;
-
 class CountryController extends Controller
 {
   /**
@@ -14,9 +12,11 @@ class CountryController extends Controller
    */
   public function index()
   {
-    $countries = Country::get();
+    $values = Country::get();
 
-    return response()->json($countries);
+    $keys = array_keys($values->first()->toArray());
+
+    return view('countries.index', compact('values', 'keys'));
   }
 
   /**

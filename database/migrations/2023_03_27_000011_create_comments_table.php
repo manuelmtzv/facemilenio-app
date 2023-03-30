@@ -11,10 +11,11 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('roles_permissions', function (Blueprint $table) {
-      $table->id()->comment("Unique role-permission relation identifier");
-      $table->foreignId("role_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
-      $table->foreignId("permission_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
+    Schema::create('comments', function (Blueprint $table) {
+      $table->id()->comment("Unique comment identifier");
+      $table->foreignId("user_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
+      $table->foreignId("activity_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
+      $table->longText("content");
       $table->string("notes")->nullable()->comment("Notes");
       $table->boolean("is_active")->default(1)->comment("Shows if it's active");
       $table->timestamps();
@@ -26,6 +27,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('roles_permissions');
+    Schema::dropIfExists('comments');
   }
 };
