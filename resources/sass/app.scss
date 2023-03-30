@@ -117,7 +117,7 @@ table {
   border-style: solid;
   border-width: 0 1px 1px 1px;
   border-radius: 5px;
-  border-collapse: separte;
+  border-collapse: separate;
   border-spacing: 0;
   display: table;
   overflow: auto;
@@ -138,6 +138,10 @@ table {
   
   thead th:last-child {
     border-top-right-radius: 5px;
+  }
+
+  tbody tr th {
+    padding: 0 1rem;
   }
   
   tbody td {
@@ -231,12 +235,13 @@ table {
 .resources {
   nav {
     @include grid(2, 2rem);
-    width: 100%;
+    width: min(60rem, 90%);
+    margin: 0 auto;
     
     a {
       text-align: center;
       background-color: $light-blue;
-      padding: 3rem 0;
+      padding: 1.4rem 0;
     }
 
     a:hover {
