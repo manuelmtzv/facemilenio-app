@@ -11,7 +11,7 @@ class ActivityController extends Controller
 {
   public function __construct()
   {
-    $this->middleware('auth');
+    // $this->middleware('auth');
   }
 
   /**
@@ -19,6 +19,11 @@ class ActivityController extends Controller
    */
   public function index()
   {
+    $values = Activity::get();
+
+    $keys = array_keys($values->first()->toArray());
+
+    return view('activities.index', compact('values', 'keys'));
   }
 
   /**

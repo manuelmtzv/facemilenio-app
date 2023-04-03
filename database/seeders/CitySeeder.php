@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\City;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 
 class CitySeeder extends Seeder
@@ -15,17 +14,12 @@ class CitySeeder extends Seeder
    */
   public function run(): void
   {
-    DB::table('cities')->insert([
-      [
-        'name' => 'Monterrey',
-        'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],
-      [
-        'name' => 'Guadalajara',
-        'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ],
+    City::create([
+      'name' => 'Monterrey'
+    ]);
+
+    City::create([
+      'name' => 'Guadalajara'
     ]);
   }
 }

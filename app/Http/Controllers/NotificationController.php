@@ -14,6 +14,11 @@ class NotificationController extends Controller
    */
   public function index()
   {
+    $values = Notification::get();
+
+    $keys = array_keys($values->first()->toArray());
+
+    return view('notifications.index', compact('values', 'keys'));
   }
 
   /**

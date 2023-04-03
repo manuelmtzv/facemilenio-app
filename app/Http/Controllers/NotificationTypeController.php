@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Friend;
+use App\Models\NotificationType;
 use Illuminate\Http\Request;
 
-class FriendController extends Controller
+class NotificationTypeController extends Controller
 {
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
-    $values = Friend::get();
+    $values = NotificationType::get();
 
     $keys = array_keys($values->first()->toArray());
 
-    return view('friends.index', compact('values', 'keys'));
+    return view('notification-types.index', compact('values', 'keys'));
   }
 
   /**
