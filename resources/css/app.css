@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .aside-link {
-  @apply text-left border-b border-gray-300 py-3 px-8 pl-2 text-base last:border-none hover:bg-gray-100 md:pl-0;
+  @apply text-left border-b border-gray-300 py-3 px-10 text-base last:border-none hover:bg-gray-100 md:pl-0;
 }
 
 .container {

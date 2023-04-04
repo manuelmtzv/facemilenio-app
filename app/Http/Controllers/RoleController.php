@@ -38,9 +38,11 @@ class RoleController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(Role $role)
   {
-    //
+    $keys = array_keys($role->toArray());
+
+    return view('activities.show', ['entity' => $role, 'keys' => $keys]);
   }
 
   /**

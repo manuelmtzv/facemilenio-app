@@ -51,13 +51,9 @@ class CountryController extends Controller
    */
   public function show(Country $country)
   {
-    if (!$country) {
-      return response()->json([
-        'message' => 'Not found'
-      ]);
-    }
+    $keys = array_keys($country->toArray());
 
-    return response()->json($country);
+    return view('activities.show', ['entity' => $country, 'keys' => $keys]);
   }
 
   /**

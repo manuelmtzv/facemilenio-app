@@ -38,9 +38,11 @@ class PermissionController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(Permission $permission)
   {
-    //
+    $keys = array_keys($permission->toArray());
+
+    return view('activities.show', ['entity' => $permission, 'keys' => $keys]);
   }
 
   /**

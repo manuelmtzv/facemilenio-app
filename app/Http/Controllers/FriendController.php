@@ -38,9 +38,11 @@ class FriendController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(Friend $friend)
   {
-    //
+    $keys = array_keys($friend->toArray());
+
+    return view('activities.show', ['entity' => $friend, 'keys' => $keys]);
   }
 
   /**

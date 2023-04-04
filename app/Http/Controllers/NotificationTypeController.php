@@ -38,9 +38,11 @@ class NotificationTypeController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(NotificationType $notificationType)
   {
-    //
+    $keys = array_keys($notificationType->toArray());
+
+    return view('activities.show', ['entity' => $notificationType, 'keys' => $keys]);
   }
 
   /**

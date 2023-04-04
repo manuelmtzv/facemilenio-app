@@ -38,9 +38,11 @@ class CityController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(City $city)
   {
-    //
+    $keys = array_keys($city->toArray());
+
+    return view('activities.show', ['entity' => $city, 'keys' => $keys]);
   }
 
   /**

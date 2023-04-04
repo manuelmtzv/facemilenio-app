@@ -1,5 +1,5 @@
-<div class="flex flex-col gap-5 py-3">
-  <div class="flex justify-between content-center mt-2">
+<div class="flex flex-col gap-5 py-3 mt-2">
+  <div class="flex justify-between content-center">
     <h1 class="capitalize text-2xl font-semibold">{{ $tableName }}</h1>
 
     <button class="button !bg-green-200 hover:!bg-green-300">Add entry</button>
@@ -29,7 +29,8 @@
 
             <td class="border-none border-t border-gray-400 py-1 px-2 align-top">
               <div class="flex content-start gap-3">
-                <a class="button !bg-blue-200 hover:!bg-blue-300" href="#">View</a>
+                <a class="button !bg-blue-200 hover:!bg-blue-300"
+                   href="{{ route(strtolower($tableName) . '.show', $value) }}">View</a>
                 <a class="button !bg-yellow-200 hover:!bg-yellow-300" href="#">Edit</a>
                 <button class="button !bg-red-300 hover:!bg-red-400">Delete</button>
               </div>

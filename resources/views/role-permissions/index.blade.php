@@ -1,7 +1,7 @@
-<x-layouts.app title="Roles-Permission" meta-description="">
+<x-layouts.app title="Role-Permissions" meta-description="">
   <div class="container">
 
-    <x-utilities.table table-name="Roles-Permission" :values="$values" :keys="$keys" />
+    <x-utilities.table table-name="Role-Permissions" :values="$values" :keys="$keys" />
 
     <br><a href={{ route('landing') }}>Home</a>
   </div>

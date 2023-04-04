@@ -19,7 +19,7 @@
       @endguest
     </nav>
 
-    <nav class="md:hidden rotate-90 tracking-wider font-bold cursor-pointer mobile-nav">
+    <nav class="md:hidden rotate-90 font-bold cursor-pointer mobile-nav button text-center !pt-1">
       |||
     </nav>
   </div>

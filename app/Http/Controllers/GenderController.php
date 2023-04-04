@@ -38,9 +38,11 @@ class GenderController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(Gender $gender)
   {
-    //
+    $keys = array_keys($gender->toArray());
+
+    return view('activities.show', ['entity' => $gender, 'keys' => $keys]);
   }
 
   /**

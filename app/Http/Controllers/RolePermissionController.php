@@ -38,9 +38,11 @@ class RolePermissionController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(RolePermission $rolePermission)
   {
-    //
+    $keys = array_keys($rolePermission->toArray());
+
+    return view('activities.show', ['entity' => $rolePermission, 'keys' => $keys]);
   }
 
   /**

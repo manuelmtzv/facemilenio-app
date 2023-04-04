@@ -38,9 +38,11 @@ class CommentController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(Comment $comment)
   {
-    //
+    $keys = array_keys($comment->toArray());
+
+    return view('activities.show', ['entity' => $comment, 'keys' => $keys]);
   }
 
   /**

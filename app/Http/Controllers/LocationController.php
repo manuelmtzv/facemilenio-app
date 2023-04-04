@@ -53,9 +53,11 @@ class LocationController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(Location $location)
   {
-    //
+    $keys = array_keys($location->toArray());
+
+    return view('activities.show', ['entity' => $location, 'keys' => $keys]);
   }
 
   /**

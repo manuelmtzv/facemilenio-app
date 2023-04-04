@@ -11,7 +11,7 @@ class ActivityController extends Controller
 {
   public function __construct()
   {
-    // $this->middleware('auth');
+    $this->middleware('auth');
   }
 
   /**
@@ -31,7 +31,6 @@ class ActivityController extends Controller
    */
   public function create()
   {
-    //
   }
 
   /**
@@ -45,9 +44,11 @@ class ActivityController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(Activity $activity)
   {
-    //
+    $keys = array_keys($activity->toArray());
+
+    return view('activities.show', ['entity' => $activity, 'keys' => $keys]);
   }
 
   /**
