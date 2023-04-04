@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.aside-link {
+  @apply text-left border-b border-gray-300 py-3 px-8 pl-2 text-base last:border-none hover:bg-gray-100 md:pl-0;
+}
+
+.container {
+  @apply w-[min(1200px,90%)] flex-1 max-w-full overflow-auto;
+}
+
+.button {
+  @apply p-2 bg-white rounded-md hover:bg-gray-100;
+}
+
+.long-field {
+  @apply min-w-[400px];
+}
+
+.show-aside {
+  @apply !left-0;
+}

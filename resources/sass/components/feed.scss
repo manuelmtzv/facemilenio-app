@@ -1,0 +1,52 @@
+// Feed
+.feed {  
+
+  &__container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 2fr;    
+    
+    padding: 6rem 0;
+
+    * {
+      min-width: 0;
+    }
+  }
+
+  &__aside {
+    display: flex;
+    flex-direction: column;    
+    gap: 2rem;
+  }
+
+  &__main {
+    flex: 1;
+  }
+
+  .notifications, .friends, .activities {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-height: 25rem;
+  }
+
+  // .notifications {
+  // }
+
+  .friends {    
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__element {
+      padding: 1rem;
+      text-align: center;
+      background-color: $light-blue;
+    }
+  }
+
+  // .activities {
+  // }
+}

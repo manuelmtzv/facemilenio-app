@@ -13,21 +13,26 @@
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
 
+  {{-- Icons --}}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   {{-- SASS file --}}
-  @vite(['resources/sass/app.scss'])
+  @vite(['resources/css/app.css'])
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
   <x-layouts.header />
 
 
-  <main class="main main-content">
-    <x-layouts.aside />
+  <main class="flex-1 flex gap-8 px-10">
+    <x-layouts.admin-aside />
 
     {{ $slot }}
   </main>
 
   <x-layouts.footer />
+
+  @vite('resources/js/mobile_navbar.js')
 </body>
 
 </html>

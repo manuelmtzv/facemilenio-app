@@ -10,6 +10,14 @@ class Activity extends Model
 {
   use HasFactory;
 
+  protected $fillable = [
+    'title',
+    'description',
+    'start_date',
+    'end_date',
+    'is_active'
+  ];
+
   public function comments()
   {
     return $this->hasMany(Comment::class);

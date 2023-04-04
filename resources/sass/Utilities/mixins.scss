@@ -1,0 +1,55 @@
+// - Mixins -
+@mixin phone {
+  @media (min-width: $phone) {
+      @content; 
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet) {
+      @content; 
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop) {
+      @content; 
+  }
+}
+
+@mixin large-dektop {
+  @media (min-width: $large-desktop) {
+      @content; 
+  }
+}
+
+@mixin grid($columnas, $espaciado) {
+  display: grid;
+  grid-template-columns: repeat($columnas, 1fr);
+  gap: $espaciado;
+}
+
+@mixin flex-center($gap) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $gap; 
+}
+
+@mixin flex-column-center($gap) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $gap; 
+}
+
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin container($min-w, $min-percentage) {
+  width: min($min-w, $min-percentage);
+  margin: 0 auto; 
+}

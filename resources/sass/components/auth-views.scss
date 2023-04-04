@@ -1,0 +1,88 @@
+// Auth views
+.login, .register {
+  padding: 14rem 0;  
+
+  &__title {
+    text-align: center;
+  }
+
+  &__form {
+    @include container(60rem, 100%);        
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 4.4rem 0;
+    background-color: $gray
+  }
+
+  &__container {
+    @include container(40rem, 90%);
+    
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }  
+
+  &__input {
+    width: 100%;
+
+    input, select, textarea {
+      width: inherit;
+      padding: 1rem;
+    }
+
+    &--remember {
+      width: auto;
+      display: flex;
+      align-items: center;
+      gap: 2rem
+    }
+  }
+
+  &__submit {
+    @include container(26rem, 80%);
+
+    padding: 1rem;
+    background-color: $light-blue;
+  }
+}
+
+.register {
+  padding: 7rem 0;
+
+  &__form {
+    @include container(90rem, 100%);    
+    
+    padding: 4.4rem 0;
+  }
+
+  &__container {
+    @include container(80rem, 90%);  
+
+    flex-direction: row;    
+  }
+
+  &__input {
+    &--city {
+      margin-top: auto;
+    }
+
+    &--description {
+      flex: 1;
+
+      textarea {
+        resize: none;
+        height: calc(100% - 18px);
+      }
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    width: 100%;
+  }
+}
