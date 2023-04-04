@@ -25,7 +25,9 @@
 
 
   <main class="flex-1 flex gap-8 px-10">
-    <x-layouts.admin-aside />
+    @auth
+      <x-layouts.admin-aside />
+    @endauth
 
     {{ $slot }}
   </main>

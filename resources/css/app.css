@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Aside */
 .aside-link {
   @apply text-left border-b border-gray-300 py-3 px-10 text-base last:border-none hover:bg-gray-100 md:pl-0;
 }
 
+.show-aside {
+  @apply !left-0;
+}
+
+/* Helpers */
 .container {
   @apply w-[min(1200px,90%)] flex-1 max-w-full overflow-auto;
 }
@@ -14,10 +20,47 @@
   @apply p-2 bg-white rounded-md hover:bg-gray-100;
 }
 
+/* Forms and auth */
 .long-field {
   @apply min-w-[400px];
 }
 
-.show-aside {
-  @apply !left-0;
+.form-container {
+  @apply w-[min(650px,90%)] h-fit my-10 mx-auto px-2 bg-gray-200 rounded-md;
+}
+
+.form {
+  @apply flex flex-col gap-4 py-6;
+}
+
+.form-title {
+  @apply text-center text-3xl font-semibold;
+}
+
+.form-section {
+  @apply w-full flex flex-col gap-2;
+}
+
+.entry-container {
+  @apply min-w-[90%] m-auto flex flex-col gap-2;
+}
+
+.label {
+  @apply w-full flex flex-col gap-1;
+}
+
+.remember {
+  @apply w-auto flex flex-row content-center gap-2;
+}
+
+.input {
+  @apply w-full p-2;
+}
+
+.select {
+  @apply p-[10px] bg-white;
+}
+
+.submit {
+  @apply w-[min(260px,80%)] mx-auto p-2 bg-blue-200 hover:bg-blue-300;
 }
