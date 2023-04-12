@@ -2,7 +2,8 @@
   <div class="flex justify-between content-center">
     <h1 class="capitalize text-2xl font-semibold">{{ $tableName }}</h1>
 
-    <button class="button !bg-green-200 hover:!bg-green-300">Add entry</button>
+    <a class="button !bg-green-200 hover:!bg-green-300" href="{{ route(strtolower($tableName) . '.create') }}">Add
+      entry</a>
   </div>
 
   <div class="scroll-container overflow-auto rounded-lg shadow md:block">
