@@ -24,7 +24,9 @@ class CommentController extends Controller
    */
   public function create()
   {
-    //
+    $keys = (new Comment)->getFIllable();
+
+    return view('comments.create', compact('keys'));
   }
 
   /**

@@ -24,7 +24,9 @@ class FriendController extends Controller
    */
   public function create()
   {
-    //
+    $keys = (new Friend())->getFIllable();
+
+    return view('friends.create', compact('keys'));
   }
 
   /**

@@ -24,7 +24,9 @@ class CountryController extends Controller
    */
   public function create()
   {
-    //
+    $keys = (new Country())->getFIllable();
+
+    return view('countries.create', compact('keys'));
   }
 
   /**

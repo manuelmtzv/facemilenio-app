@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  protected $fillable = [
+    'notification_type_id',
+    'user_id',
+    'content'
+  ];
 }

@@ -24,7 +24,9 @@ class CityController extends Controller
    */
   public function create()
   {
-    //
+    $keys = (new City)->getFIllable();
+
+    return view('cities.create', compact('keys'));
   }
 
   /**

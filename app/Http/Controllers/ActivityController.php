@@ -31,9 +31,7 @@ class ActivityController extends Controller
    */
   public function create()
   {
-    $model = new Activity();
-
-    $keys = array_keys($model->getFillable());
+    $keys = (new Activity)->getFIllable();
 
     return view('activities.create', compact('keys'));
   }

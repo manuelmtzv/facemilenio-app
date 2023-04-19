@@ -20,6 +20,10 @@
   @apply p-2 bg-white rounded-md hover:bg-gray-100;
 }
 
+.add-entry {
+  @apply p-2 bg-green-200 hover:bg-green-300 rounded-md w-full max-w-xs mx-auto;
+}
+
 /* Forms and auth */
 .long-field {
   @apply min-w-[400px];
