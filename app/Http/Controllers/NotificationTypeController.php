@@ -25,8 +25,9 @@ class NotificationTypeController extends Controller
   public function create()
   {
     $keys = (new NotificationType)->getFIllable();
+    $columnTypes = NotificationType::$columnTypes;
 
-    return view('notification-types.create', compact('keys'));
+    return view('notification-types.create', compact('keys', 'columnTypes'));
   }
 
   /**

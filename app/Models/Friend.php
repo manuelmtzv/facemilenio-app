@@ -15,4 +15,11 @@ class Friend extends Model
     'is_requested',
     'is_accepted'
   ];
+
+  public static $columnTypes = [
+    'user_id' => 'number',
+    'friend_id' => 'number',
+    'is_requested' => 'number',
+    'is_accepted' => 'number',
+  ];
 }

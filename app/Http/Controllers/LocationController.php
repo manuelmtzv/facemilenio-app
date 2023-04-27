@@ -30,8 +30,9 @@ class LocationController extends Controller
   public function create()
   {
     $keys = (new Location)->getFIllable();
+    $columnTypes = Location::$columnTypes;
 
-    return view('locations.create', compact('keys'));
+    return view('locations.create', compact('keys', 'columnTypes'));
   }
 
   /**

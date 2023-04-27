@@ -25,8 +25,9 @@ class UserController extends Controller
   public function create()
   {
     $keys = (new User)->getFIllable();
+    $columnTypes = User::$columnTypes;
 
-    return view('users.create', compact('keys'));
+    return view('users.create', compact('keys', 'columnTypes'));
   }
 
   /**

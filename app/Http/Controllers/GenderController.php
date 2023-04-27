@@ -25,8 +25,9 @@ class GenderController extends Controller
   public function create()
   {
     $keys = (new gender)->getFIllable();
+    $columnTypes = Gender::$columnTypes;
 
-    return view('genders.create', compact('keys'));
+    return view('genders.create', compact('keys', 'columnTypes'));
   }
 
   /**

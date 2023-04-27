@@ -25,8 +25,9 @@ class CountryController extends Controller
   public function create()
   {
     $keys = (new Country())->getFIllable();
+    $columnTypes = Country::$columnTypes;
 
-    return view('countries.create', compact('keys'));
+    return view('countries.create', compact('keys', 'columnTypes'));
   }
 
   /**

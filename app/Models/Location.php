@@ -13,4 +13,9 @@ class Location extends Model
     'country_id',
     'city_id',
   ];
+
+  public static $columnTypes = [
+    'country_id' => 'number',
+    'city_id' => 'number',
+  ];
 }

@@ -13,5 +13,9 @@ class Country extends Model
     'name'
   ];
 
+  public static $columnTypes = [
+    'name' => 'text',
+  ];
+
   protected $table = 'countries';
 }

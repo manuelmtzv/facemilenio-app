@@ -14,4 +14,10 @@ class Notification extends Model
     'user_id',
     'content'
   ];
+
+  public static $columnTypes = [
+    'notification_type_id' => 'number',
+    'user_id' => 'number',
+    'content' => 'longText'
+  ];
 }

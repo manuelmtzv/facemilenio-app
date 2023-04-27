@@ -7,12 +7,17 @@
         @if (in_array($columnTypes[$key], ['text', 'number']))
           <label class="capitalize flex flex-col" for={{ $key }}>
             {{ $key }}
-            <input class="border p-2 rounded-md resize-none" type="text" name={{ $key }}>
+            <input class="border p-2 rounded-md" type="text" name={{ $key }}>
           </label>
         @elseif (in_array($columnTypes[$key], ['longText']))
           <label class="capitalize flex flex-col" for={{ $key }}>
             {{ $key }}
-            <textarea class="border p-2 rounded-md resize-none" name={{ $key }}></textarea>
+            <textarea class="border p-2 rounded-md" name={{ $key }}></textarea>
+          </label>
+        @elseif(in_array($columnTypes[$key], ['date']))
+          <label class="capitalize flex flex-col" for={{ $key }}>
+            {{ $key }}
+            <input class="border p-2 rounded-md" type="date" name={{ $key }}>
           </label>
         @endif
       @endforeach

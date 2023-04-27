@@ -25,6 +25,19 @@ class User extends Authenticatable
     'role_id'
   ];
 
+  public static $columnTypes = [
+    'username' => 'text',
+    'name' => 'text',
+    'surname' => 'text',
+    'email' => 'text',
+    'password' => 'text',
+    'location_id' => 'number',
+    'gender_id' => 'number',
+    'birthdate' => 'date',
+    'biography' => 'longText',
+    'role_id' => 'number'
+  ];
+
   /**
    * The attributes that should be hidden for serialization.
    *

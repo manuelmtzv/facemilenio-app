@@ -25,8 +25,9 @@ class RoleController extends Controller
   public function create()
   {
     $keys = (new Role)->getFIllable();
+    $columnTypes = Role::$columnTypes;
 
-    return view('roles.create', compact('keys'));
+    return view('roles.create', compact('keys', 'columnTypes'));
   }
 
   /**

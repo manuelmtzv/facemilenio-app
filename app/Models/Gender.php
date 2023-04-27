@@ -12,4 +12,8 @@ class Gender extends Model
   protected $fillable = [
     'name'
   ];
+
+  public static $columnTypes = [
+    'name' => 'text'
+  ];
 }

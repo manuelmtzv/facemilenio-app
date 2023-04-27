@@ -12,4 +12,9 @@ class RolePermission extends Model
   protected $fillable = [
     'role_id', 'permission_id'
   ];
+
+  public static $columnTypes = [
+    'role_id' => 'number',
+    'permission_id' => 'number'
+  ];
 }

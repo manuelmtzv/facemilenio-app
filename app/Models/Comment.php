@@ -14,4 +14,10 @@ class Comment extends Model
     'activity_id',
     'content'
   ];
+
+  public static $columnTypes = [
+    'user_id' => 'number',
+    'activity_id' => 'number',
+    'content' => 'longtext'
+  ];
 }

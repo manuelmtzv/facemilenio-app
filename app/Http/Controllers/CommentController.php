@@ -25,8 +25,9 @@ class CommentController extends Controller
   public function create()
   {
     $keys = (new Comment)->getFIllable();
+    $columnTypes = Comment::$columnTypes;
 
-    return view('comments.create', compact('keys'));
+    return view('comments.create', compact('keys', 'columnTypes'));
   }
 
   /**
