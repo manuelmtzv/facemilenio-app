@@ -13,7 +13,11 @@ class Activity extends Model
   protected $fillable = [
     'title',
     'description',
-    'is_active'
+  ];
+
+  public static $columnTypes = [
+    'title' => 'text',
+    'description' => 'longText',
   ];
 
   public function comments()

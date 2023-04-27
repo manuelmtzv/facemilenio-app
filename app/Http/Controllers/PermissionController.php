@@ -24,7 +24,9 @@ class PermissionController extends Controller
    */
   public function create()
   {
-    //
+    $keys = (new Permission)->getFIllable();
+
+    return view('permissions.create', compact('keys'));
   }
 
   /**

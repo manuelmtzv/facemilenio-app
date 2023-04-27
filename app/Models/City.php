@@ -13,5 +13,9 @@ class City extends Model
     'name'
   ];
 
+  public static $columnTypes = [
+    'name' => 'text',
+  ];
+
   protected $table = 'cities';
 }

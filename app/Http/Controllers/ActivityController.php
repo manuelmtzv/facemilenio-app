@@ -32,8 +32,9 @@ class ActivityController extends Controller
   public function create()
   {
     $keys = (new Activity)->getFIllable();
+    $columnTypes = Activity::$columnTypes;
 
-    return view('activities.create', compact('keys'));
+    return view('activities.create', compact('keys', 'columnTypes'));
   }
 
   /**

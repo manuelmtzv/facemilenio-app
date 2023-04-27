@@ -29,7 +29,9 @@ class LocationController extends Controller
    */
   public function create()
   {
-    //
+    $keys = (new Location)->getFIllable();
+
+    return view('locations.create', compact('keys'));
   }
 
   /**

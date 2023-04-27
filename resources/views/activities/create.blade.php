@@ -1,7 +1,7 @@
 <x-layouts.app title="activities" meta-description="">
   <div class="container">
 
-    <x-forms.create model-name="activity" back-route="activities.index" :keys="$keys" />
+    <x-forms.create model-name="activity" back-route="activities.index" :keys="$keys" :column-types="$columnTypes" />
 
   </div>
 </x-layouts.app>

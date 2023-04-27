@@ -1,14 +1,20 @@
 <div class="flex flex-col gap-5 py-3 mt-2">
   <h1 class="capitalize text-2xl font-semibold pb-2 border-b border-gray-300">{{ $modelName }} -> Create </h1>
 
-
   <div class="w-full">
     <form class="flex flex-col gap-4 px-1" action="">
       @foreach ($keys as $key)
-        <label class="capitalize flex flex-col" for={{ $key }}>
-          {{ $key }}
-          <input class="border p-2 rounded-md" type="text" name={{ $key }}>
-        </label>
+        @if (in_array($columnTypes[$key], ['text', 'number']))
+          <label class="capitalize flex flex-col" for={{ $key }}>
+            {{ $key }}
+            <input class="border p-2 rounded-md resize-none" type="text" name={{ $key }}>
+          </label>
+        @elseif (in_array($columnTypes[$key], ['longText']))
+          <label class="capitalize flex flex-col" for={{ $key }}>
+            {{ $key }}
+            <textarea class="border p-2 rounded-md resize-none" name={{ $key }}></textarea>
+          </label>
+        @endif
       @endforeach
 
       <button class="add-entry">Add entry</button>

@@ -24,7 +24,9 @@ class RolePermissionController extends Controller
    */
   public function create()
   {
-    //
+    $keys = (new RolePermission)->getFIllable();
+
+    return view('role-permissions.create', compact('keys'));
   }
 
   /**

@@ -20,6 +20,16 @@ class UserController extends Controller
   }
 
   /**
+   * Show the form for creating a new resource.
+   */
+  public function create()
+  {
+    $keys = (new User)->getFIllable();
+
+    return view('users.create', compact('keys'));
+  }
+
+  /**
    * Display the specified resource.
    */
   public function show(User $user)
