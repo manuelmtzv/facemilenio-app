@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\Activity;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Comment extends Model
 {
@@ -20,4 +22,14 @@ class Comment extends Model
     'activity_id' => 'number',
     'content' => 'longtext'
   ];
+
+  public function activities()
+  {
+    return $this->belongsTo(Activity::class);
+  }
+
+  public function users()
+  {
+    return $this->belongsTo(User::class);
+  }
 }

@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Location;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class City extends Model
 {
@@ -18,4 +19,9 @@ class City extends Model
   ];
 
   protected $table = 'cities';
+
+  public function locations()
+  {
+    return $this->belongsTo(Location::class);
+  }
 }

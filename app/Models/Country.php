@@ -18,4 +18,9 @@ class Country extends Model
   ];
 
   protected $table = 'countries';
+
+  public function locations()
+  {
+    return $this->belongsTo(Location::class);
+  }
 }
