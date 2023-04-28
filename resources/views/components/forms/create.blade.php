@@ -12,7 +12,7 @@
         @elseif (in_array($columnTypes[$key], ['longText']))
           <label class="capitalize flex flex-col" for={{ $key }}>
             {{ $key }}
-            <textarea class="border p-2 rounded-md" name={{ $key }}></textarea>
+            <textarea class="border p-2 rounded-md h-32" name={{ $key }}></textarea>
           </label>
         @elseif(in_array($columnTypes[$key], ['date']))
           <label class="capitalize flex flex-col" for={{ $key }}>

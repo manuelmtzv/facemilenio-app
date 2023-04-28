@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Gender extends Model
 {
@@ -16,4 +17,9 @@ class Gender extends Model
   public static $columnTypes = [
     'name' => 'text'
   ];
+
+  public function users()
+  {
+    $this->belongsTo(User::class);
+  }
 }

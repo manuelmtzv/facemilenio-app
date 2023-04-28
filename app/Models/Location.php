@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\City;
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Location extends Model
 {
@@ -18,4 +20,14 @@ class Location extends Model
     'country_id' => 'number',
     'city_id' => 'number',
   ];
+
+  public function cities()
+  {
+    $this->hasOne(City::class);
+  }
+
+  public function countries()
+  {
+    $this->hasOne(Country::class);
+  }
 }

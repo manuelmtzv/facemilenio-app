@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\NotificationType;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Notification extends Model
 {
@@ -20,4 +21,9 @@ class Notification extends Model
     'user_id' => 'number',
     'content' => 'longText'
   ];
+
+  public function notificationType()
+  {
+    $this->hasOne(NotificationType::class);
+  }
 }
