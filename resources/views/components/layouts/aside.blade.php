@@ -1,4 +1,4 @@
-<aside class="block static w-auto py-3 bg-transparent overflow-y-auto">
+<aside class="hidden w-full max-w-[10rem] py-3 bg-transparent lg:block">
 
   <nav class="flex flex-col">
     @auth

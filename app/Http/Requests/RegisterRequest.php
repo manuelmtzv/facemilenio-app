@@ -29,6 +29,7 @@ class RegisterRequest extends FormRequest
       'email' => ['required', 'email', 'unique:users'],
       'password' => ['required', 'string', Password::defaults()],
       'gender' => ['required', 'string'],
+      'birthdate' => ['required', 'date']
     ];
   }
 }

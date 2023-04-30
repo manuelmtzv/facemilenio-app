@@ -1,5 +1,5 @@
 <x-layouts.app title="Notification-Types" meta-description="">
-  <div class="container">
+  <div class="crud-container">
 
     <x-utilities.table table-name="Notification-Types" :values="$values" :keys="$keys" />
 

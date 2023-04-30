@@ -19,7 +19,7 @@
       @endguest
     </nav>
 
-    <nav class="lg:hidden rotate-90 font-bold cursor-pointer mobile-nav button text-center !pt-1">
+    <nav class="lg:hidden rotate-90 font-bold cursor-pointer mobile-nav-button button text-center !pt-1">
       |||
     </nav>
   </div>

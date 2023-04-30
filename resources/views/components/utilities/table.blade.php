@@ -6,7 +6,7 @@
       entry</a>
   </div>
 
-  <div class="scroll-container overflow-auto rounded-lg shadow md:block">
+  <div class="scroll-container overflow-x-auto rounded-lg shadow md:block">
     <table class="w-full text-black bg-white">
 
       <thead class="bg-gray-800">

@@ -20,6 +20,10 @@ class Activity extends Model
     'description' => 'longText',
   ];
 
+  protected $hidden = [
+    'notes', 'is_active', 'created_at', 'updated_at'
+  ];
+
   public function comments()
   {
     return $this->hasMany(Comment::class);

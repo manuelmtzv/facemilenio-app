@@ -1,5 +1,5 @@
-const aside = document.querySelector(".admin-aside");
-const mobileButton = document.querySelector(".mobile-nav");
+const aside = document.querySelector(".mobile-nav");
+const mobileButton = document.querySelector(".mobile-nav-button");
 
 const mobileCLass = "show-mobile-nav";
 

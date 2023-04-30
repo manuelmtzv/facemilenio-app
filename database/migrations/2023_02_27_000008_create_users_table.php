@@ -21,9 +21,9 @@ return new class extends Migration
       $table->foreignId("role_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
       $table->foreignId("gender_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
       $table->date("birthdate")->comment("User birthdate");
-      $table->tinyText("url_profile")->nullable()->comment("URL of the profile image of the user");
-      $table->longText("biography")->comment("User autobiography");
-      $table->foreignId("location_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
+      $table->tinyText("url_profile")->nullable()->comment("URL of the profile image of the user")->nullable();
+      $table->longText("biography")->comment("User autobiography")->nullable();
+      $table->foreignId("location_id")->nullable()->constrained()->onDelete("cascade")->onUpdate("cascade");
       $table->rememberToken();
       $table->string("notes")->nullable()->comment("Notes");
       $table->boolean("is_active")->default(1)->comment("Shows if it's active");

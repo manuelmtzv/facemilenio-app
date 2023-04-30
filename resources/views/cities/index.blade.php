@@ -1,5 +1,5 @@
 <x-layouts.app title="Cities" meta-description="">
-  <div class="container">
+  <div class="crud-container">
 
     <x-utilities.table table-name="Cities" :values="$values" :keys="$keys" />
 

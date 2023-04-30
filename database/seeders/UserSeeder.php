@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
       'gender_id' => 1,
       'birthdate' => '2002-12-28',
       'biography' => 'Hola, soy Manuel',
-      'role_id' => 1
+      'role_id' => 2
     ]);
 
     User::create([

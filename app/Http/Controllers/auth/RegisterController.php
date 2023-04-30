@@ -33,22 +33,17 @@ class RegisterController extends Controller
     return view('auth.register', compact('genders', 'countries', 'cities'));
   }
 
-  public function register(RegisterRequest $request, SaveLocationRequest $saveLocationRequest, Redirector $redirect)
+  public function register(RegisterRequest $request, Redirector $redirect)
   {
     $values = $request->validated();
 
     // Gender
     $gender = Gender::where('name', $values['gender'])->firstOrFail();
 
-    // Location
-    $location = app(LocationController::class)->store($saveLocationRequest);
-
     // User
-    $values['location_id'] = $location->id;
     $values['gender_id'] = $gender->id;
 
     // Hardcoded testing values (removing later)
-    $values['username'] = 'default';
     $values['role_id'] = 1;
 
     $user = User::create(array_merge($values, [

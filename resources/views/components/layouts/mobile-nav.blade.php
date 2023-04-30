@@ -4,7 +4,7 @@
     <h1 class="text-3xl font-bold">Facemilenio</h1>
   </div>
 
-  <nav class="flex flex-col p-2">
+  <nav class="flex flex-col px-10">
     @auth
       <a class="aside-link" href="{{ route('feed') }}">Home</a>
 

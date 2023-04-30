@@ -24,7 +24,7 @@
   <x-layouts.header />
 
 
-  <main class="content flex-1 flex gap-8">
+  <main class="content flex-1 flex gap-0 lg:gap-8">
     @auth
       <x-layouts.aside />
     @endauth

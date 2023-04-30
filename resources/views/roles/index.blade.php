@@ -1,5 +1,5 @@
 <x-layouts.app title="Roles" meta-description="">
-  <div class="container">
+  <div class="crud-container">
 
     <x-utilities.table table-name="Roles" :values="$values" :keys="$keys" />
 

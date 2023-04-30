@@ -55,7 +55,7 @@
 }
 
 .entry-container {
-  @apply min-w-[90%] m-auto flex flex-col gap-2;
+  @apply flex flex-col gap-2 w-[95%] mx-auto;
 }
 
 .label {
@@ -67,7 +67,7 @@
 }
 
 .input {
-  @apply w-full p-2;
+  @apply w-full p-2 rounded-md;
 }
 
 .select {
@@ -75,5 +75,13 @@
 }
 
 .submit {
-  @apply w-[min(260px,80%)] mx-auto p-2 bg-blue-200 hover:bg-blue-300;
+  @apply ml-auto py-2 px-6 bg-blue-200 rounded-md hover:bg-blue-300;
+}
+
+.form-error {
+  @apply text-red-500;
+}
+
+.crud-container {
+  @apply flex flex-col flex-1 overflow-x-auto;
 }

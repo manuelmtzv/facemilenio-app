@@ -8,11 +8,17 @@
         <label class="label" for="email">
           Email
           <input class="input" id="email" name="email" type="email">
+          @error('email')
+            <small class="form-error">{{ $message }}</small>
+          @enderror
         </label>
 
         <label class="label" for="password">
           Password
           <input class="input" id="password" name="password" type="password">
+          @error('password')
+            <small class="form-error">{{ $message }}</small>
+          @enderror
         </label>
 
         <label class="remember" for="remember">
