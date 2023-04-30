@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-5 py-3 mt-2">
+<div class="flex flex-col gap-5 ">
   <div class="flex justify-between content-center">
     <h1 class="capitalize text-2xl font-semibold">{{ $tableName }}</h1>
 

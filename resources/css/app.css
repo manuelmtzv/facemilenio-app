@@ -86,6 +86,7 @@
   @apply text-red-500;
 }
 
+/* CRUD */
 .crud-container {
-  @apply flex flex-col flex-1 overflow-x-auto;
+  @apply flex flex-col flex-1 overflow-x-auto gap-4;
 }

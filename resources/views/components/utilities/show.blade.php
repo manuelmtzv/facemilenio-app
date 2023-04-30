@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-5 py-3 mt-2">
+<div class="flex flex-col gap-5">
   <h1 class="capitalize text-2xl font-semibold pb-2 border-b border-gray-300">{{ $modelName }} -> id:
     {{ $entity->id }}</h1>
 

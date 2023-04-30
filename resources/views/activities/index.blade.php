@@ -2,6 +2,6 @@
   <div class="crud-container">
     <x-utilities.table table-name="Activities" :values="$values" :keys="$keys" />
 
-    <a href={{ route('landing') }}>Home</a>
+    <x-utilities.home-button />
   </div>
 </x-layouts.app>
