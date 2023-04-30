@@ -1,5 +1,5 @@
-<header class="bg-gray-300 flex py-4 px-10">
-  <div class="flex justify-between items-center w-full">
+<header class="bg-gray-300 flex py-8">
+  <div class="content flex justify-between items-center">
     <h1 class="text-3xl font-bold">Facemilenio</h1>
 
     <nav class="items-center gap-5 hidden lg:flex">

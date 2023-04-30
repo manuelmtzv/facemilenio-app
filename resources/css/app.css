@@ -4,7 +4,7 @@
 
 /* Aside */
 .aside-link {
-  @apply text-left border-b border-gray-300 py-3 px-10 text-base last:border-none hover:bg-gray-100 md:pl-0;
+  @apply text-left border-b border-gray-300 py-3 px-10 text-base last:border-none hover:bg-gray-100 pl-0;
 }
 
 .show-aside {
@@ -12,8 +12,12 @@
 }
 
 /* Helpers */
-.container {
+/* .container {
   @apply w-[min(1200px,90%)] flex-1 max-w-full overflow-auto;
+} */
+
+.content {
+  @apply container w-[90%] mx-auto;
 }
 
 .button {
@@ -24,13 +28,18 @@
   @apply p-2 bg-green-200 hover:bg-green-300 rounded-md w-full max-w-xs mx-auto;
 }
 
+/* Mobile nav */
+.show-mobile-nav {
+  @apply left-0;
+}
+
 /* Forms and auth */
 .long-field {
   @apply min-w-[400px];
 }
 
 .form-container {
-  @apply w-[min(650px,90%)] h-fit my-10 mx-auto px-2 bg-gray-200 rounded-md;
+  @apply w-full max-w-lg h-fit my-10 mx-auto px-2 bg-gray-200 rounded-md;
 }
 
 .form {

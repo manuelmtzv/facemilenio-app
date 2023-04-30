@@ -25,13 +25,10 @@ class RegisterRequest extends FormRequest
     return [
       'name' => ['required', 'string'],
       'surname' => ['required', 'string'],
+      'username' => ['required', 'string', 'unique:users'],
       'email' => ['required', 'email', 'unique:users'],
       'password' => ['required', 'string', Password::defaults()],
-      'country' => ['required', 'string'],
-      'city' => ['required', 'string'],
       'gender' => ['required', 'string'],
-      'birthdate' => ['required', 'string'],
-      'biography' => ['required', 'string'],
     ];
   }
 }

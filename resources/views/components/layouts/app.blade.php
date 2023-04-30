@@ -24,15 +24,18 @@
   <x-layouts.header />
 
 
-  <main class="flex-1 flex gap-8 px-10">
+  <main class="content flex-1 flex gap-8">
     @auth
-      <x-layouts.admin-aside />
+      <x-layouts.aside />
     @endauth
 
     {{ $slot }}
   </main>
 
   <x-layouts.footer />
+
+  {{-- Mobile nav --}}
+  <x-layouts.mobile-nav />
 
   @vite('resources/js/mobile_navbar.js')
 </body>

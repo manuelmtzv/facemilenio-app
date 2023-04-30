@@ -16,4 +16,9 @@ class Role extends Model
   public static $columnTypes = [
     'name' => 'text',
   ];
+
+  public function users()
+  {
+    $this->hasMany(User::class);
+  }
 }
