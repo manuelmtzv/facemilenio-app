@@ -24,11 +24,11 @@
           <tr class="even:bg-gray-200">
             @foreach ($keys as $key)
               <td
-                  class="border-none border-t border-gray-400 py-1 px-2 align-top max-w-[500px] {{ strlen($value->$key) > 80 ? 'long-field' : '' }}">
+                  class="border-none border-t border-gray-400 py-2 px-3 align-top max-w-fit {{ strlen($value->$key) > 80 ? 'long-field' : '' }}">
                 {{ $value->$key }}</td>
             @endforeach
 
-            <td class="border-none border-t border-gray-400 py-1 px-2 align-top">
+            <td class="border-none border-t border-gray-400 py-2 px-3 align-top">
               <div class="flex content-start gap-3">
                 <a class="button !bg-blue-200 hover:!bg-blue-300"
                    href="{{ route(strtolower($tableName) . '.show', $value) }}">View</a>

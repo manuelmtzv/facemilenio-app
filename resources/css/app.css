@@ -4,7 +4,7 @@
 
 /* Aside */
 .aside-link {
-  @apply text-left border-b border-gray-300 py-3 px-10 text-base last:border-none hover:bg-gray-100 pl-0;
+  @apply text-left border-b border-gray-300 py-3 px-10 text-base  hover:bg-gray-100 pl-0;
 }
 
 .show-aside {
@@ -21,7 +21,7 @@
 }
 
 .button {
-  @apply p-2 bg-white rounded-md hover:bg-gray-100;
+  @apply py-2 px-3 bg-white rounded-md hover:bg-gray-100;
 }
 
 .add-entry {
@@ -31,6 +31,10 @@
 /* Mobile nav */
 .show-mobile-nav {
   @apply left-0;
+}
+
+.routes-group {
+  @apply flex flex-col gap-2;
 }
 
 /* Forms and auth */

@@ -1,23 +1,41 @@
-<div class="mobile-nav fixed w-[70%] top-0 bottom-0 admin-aside ease-in-out duration-200 left-[-100%] bg-gray-50 ">
+<div
+     class="mobile-nav fixed w-[70%] top-0 bottom-0 admin-aside ease-in-out duration-200 left-[-100%] bg-gray-50 overflow-y-auto ">
   <div class="bg-gray-300
   flex py-8 px-10">
     <h1 class="text-3xl font-bold">Facemilenio</h1>
   </div>
 
-  <nav class="flex flex-col px-10">
+  <nav class="flex flex-col px-10 py-6 gap-4">
     @auth
-      <a class="aside-link" href="{{ route('feed') }}">Home</a>
+      <div class="routes-group">
+        <h4 class="font-bold">Navigation Routes:</h4>
+        <a class="aside-link" href="{{ route('feed') }}">Home</a>
+      </div>
 
-      <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button class="button">Logout</button>
-      </form>
+      @if (auth()->user()->role->name === 'User')
+      @else
+        <div class="routes-group">
+          <h4 class="font-bold">CRUD Routes:</h4>
+          <x-utilities.admin-links />
+        </div>
+      @endif
+
+      <div class="routes-group">
+        <h4 class="font-bold">Extra Routes:</h4>
+        <form action="{{ route('logout') }}" method="POST">
+          @csrf
+          <button class="button">Logout</button>
+        </form>
+      </div>
     @endauth
 
     @guest
-      <a class="aside-link" href="{{ route('landing') }}">Landing</a>
-      <a class="aside-link" href="{{ route('login') }}">Login</a>
-      <a class="aside-link" href="{{ route('register') }}">Signup</a>
+      <div class="routes-group">
+        <h4 class="font-bold">Guest Routes:</h4>
+        <a class="aside-link" href="{{ route('landing') }}">Landing</a>
+        <a class="aside-link" href="{{ route('login') }}">Login</a>
+        <a class="aside-link" href="{{ route('register') }}">Signup</a>
+      </div>
     @endguest
   </nav>
 </div>
