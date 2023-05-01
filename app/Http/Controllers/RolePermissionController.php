@@ -78,8 +78,11 @@ class RolePermissionController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(RolePermission $rolePermission, Redirector $redirect)
   {
-    //
+    $rolePermission->delete();
+
+    return $redirect
+      ->route('role-permissions.index')->with('status', 'The role permission entry has been deleted!');
   }
 }

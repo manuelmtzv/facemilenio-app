@@ -78,8 +78,11 @@ class UserController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(User $user, Redirector $redirect)
   {
-    //
+    $user->delete();
+
+    return $redirect
+      ->route('users.index')->with('status', 'The user entry has been deleted!');
   }
 }

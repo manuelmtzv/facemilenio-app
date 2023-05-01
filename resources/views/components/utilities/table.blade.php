@@ -33,7 +33,13 @@
                 <a class="button !bg-blue-200 hover:!bg-blue-300"
                    href="{{ route(strtolower($tableName) . '.show', $value) }}">View</a>
                 <a class="button !bg-yellow-200 hover:!bg-yellow-300" href="#">Edit</a>
-                <button class="button !bg-red-300 hover:!bg-red-400">Delete</button>
+
+                <form action="{{ route(strtolower($tableName) . '.destroy', $value->id) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button class="button !bg-red-300 hover:!bg-red-400">Delete</button>
+                </form>
+
               </div>
             </td>
           </tr>

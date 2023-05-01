@@ -78,8 +78,11 @@ class PermissionController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Permission $permission, Redirector $redirect)
   {
-    //
+    $permission->delete();
+
+    return $redirect
+      ->route('permissions.index')->with('status', 'The permission entry has been deleted!');
   }
 }

@@ -78,8 +78,11 @@ class CommentController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Comment $comment, Redirector $redirect)
   {
-    //
+    $comment->delete();
+
+    return $redirect
+      ->route('comments.index')->with('status', 'The comment entry has been deleted!');
   }
 }

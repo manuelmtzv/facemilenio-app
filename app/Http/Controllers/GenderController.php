@@ -78,8 +78,11 @@ class GenderController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Gender $gender, Redirector $redirect)
   {
-    //
+    $gender->delete();
+
+    return $redirect
+      ->route('genders.index')->with('status', 'The gender entry has been deleted!');
   }
 }

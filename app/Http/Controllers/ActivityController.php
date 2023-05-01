@@ -87,9 +87,12 @@ class ActivityController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Activity $activity, Redirector $redirect)
   {
-    //
+    $activity->delete();
+
+    return $redirect
+      ->route('activities.index')->with('status', 'The activity entry has been deleted!');
   }
 
   public function getAll()

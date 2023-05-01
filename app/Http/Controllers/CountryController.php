@@ -78,8 +78,11 @@ class CountryController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Country $country, Redirector $redirect)
   {
-    //
+    $country->delete();
+
+    return $redirect
+      ->route('countries.index')->with('status', 'The country entry has been deleted!');
   }
 }

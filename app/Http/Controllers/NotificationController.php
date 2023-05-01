@@ -80,8 +80,11 @@ class NotificationController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Notification $notification, Redirector $redirect)
   {
-    //
+    $notification->delete();
+
+    return $redirect
+      ->route('notifications.index')->with('status', 'The notification entry has been deleted!');
   }
 }

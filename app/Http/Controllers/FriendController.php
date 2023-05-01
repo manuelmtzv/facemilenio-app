@@ -78,8 +78,11 @@ class FriendController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Friend $friend, Redirector $redirect)
   {
-    //
+    $friend->delete();
+
+    return $redirect
+      ->route('friends.index')->with('status', 'The friend entry has been deleted!');
   }
 }
