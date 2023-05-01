@@ -15,7 +15,7 @@ return new class extends Migration
       $table->id()->comment("Unique activity identifier");
       $table->text("title")->comment("Title of the post")->nullable();
       $table->longText("content")->comment("Text content of the post");
-      $table->foreignId("user_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
+      $table->foreignId("user_id")->constrained()->onUpdate("cascade");
       $table->string("notes")->nullable()->comment("Notes");
       $table->boolean("is_active")->default(1)->comment("Shows if it's active");
       $table->timestamps();
