@@ -15,8 +15,11 @@ class RolePermissionController extends Controller
   public function index()
   {
     $values = RolePermission::get();
+    $keys = [];
 
-    $keys = array_keys($values->first()->toArray());
+    if (count($values) > 0) {
+      $keys = array_keys($values->first()->toArray());
+    }
 
     return view('role-permissions.index', compact('values', 'keys'));
   }

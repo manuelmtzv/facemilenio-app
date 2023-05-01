@@ -24,8 +24,12 @@ class ActivityController extends Controller
   public function index()
   {
     $values = Activity::get();
+    $keys = [];
 
-    $keys = array_keys($values->first()->toArray());
+    if (count($values) > 0) {
+      $keys = array_keys($values->first()->toArray());
+    }
+
 
     return view('activities.index', compact('values', 'keys'));
   }

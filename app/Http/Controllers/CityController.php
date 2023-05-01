@@ -15,8 +15,11 @@ class CityController extends Controller
   public function index()
   {
     $values = City::get();
+    $keys = [];
 
-    $keys = array_keys($values->first()->toArray());
+    if (count($values) > 0) {
+      $keys = array_keys($values->first()->toArray());
+    }
 
     return view('cities.index', compact('values', 'keys'));
   }

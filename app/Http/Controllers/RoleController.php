@@ -15,8 +15,11 @@ class RoleController extends Controller
   public function index()
   {
     $values = Role::get();
+    $keys = [];
 
-    $keys = array_keys($values->first()->toArray());
+    if (count($values) > 0) {
+      $keys = array_keys($values->first()->toArray());
+    }
 
     return view('roles.index', compact('values', 'keys'));
   }

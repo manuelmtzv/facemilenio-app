@@ -15,8 +15,11 @@ class CountryController extends Controller
   public function index()
   {
     $values = Country::get();
+    $keys = [];
 
-    $keys = array_keys($values->first()->toArray());
+    if (count($values) > 0) {
+      $keys = array_keys($values->first()->toArray());
+    }
 
     return view('countries.index', compact('values', 'keys'));
   }

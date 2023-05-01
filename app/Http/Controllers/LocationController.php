@@ -17,8 +17,11 @@ class LocationController extends Controller
   public function index()
   {
     $values = Location::get();
+    $keys = [];
 
-    $keys = array_keys($values->first()->toArray());
+    if (count($values) > 0) {
+      $keys = array_keys($values->first()->toArray());
+    }
 
     return view('locations.index', compact('values', 'keys'));
   }

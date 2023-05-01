@@ -15,8 +15,11 @@ class UserController extends Controller
   public function index()
   {
     $values = User::get();
+    $keys = [];
 
-    $keys = array_keys($values->first()->toArray());
+    if (count($values) > 0) {
+      $keys = array_keys($values->first()->toArray());
+    }
 
     return view('users.index', compact('values', 'keys'));
   }
