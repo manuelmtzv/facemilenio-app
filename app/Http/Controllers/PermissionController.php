@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Store\StorePermissionRequest;
 use App\Models\Permission;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class PermissionController extends Controller
 {
@@ -33,9 +35,18 @@ class PermissionController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(StorePermissionRequest $request, Redirector $redirect)
   {
-    //
+    $values = $request->validated();
+
+    try {
+      Permission::create($values);
+
+      return $redirect
+        ->route('permissions.index')->with('status', 'The permission entry has been created!');
+    } catch (Throwable $th) {
+      return $redirect->route('permissions.create')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

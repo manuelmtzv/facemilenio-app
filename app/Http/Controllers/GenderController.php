@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Store\StoreGenderRequest;
 use App\Models\Gender;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class GenderController extends Controller
 {
@@ -33,9 +35,18 @@ class GenderController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(StoreGenderRequest $request, Redirector $redirect)
   {
-    //
+    $values = $request->validated();
+
+    try {
+      Gender::create($values);
+
+      return $redirect
+        ->route('genders.index')->with('status', 'The gender entry has been created!');
+    } catch (Throwable $th) {
+      return $redirect->route('genders.create')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

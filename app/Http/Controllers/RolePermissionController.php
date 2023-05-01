@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Store\StoreRolePermissionsRequest;
 use App\Models\RolePermission;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class RolePermissionController extends Controller
 {
@@ -33,9 +35,18 @@ class RolePermissionController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(StoreRolePermissionsRequest $request, Redirector $redirect)
   {
-    //
+    $values = $request->validated();
+
+    try {
+      RolePermission::create($values);
+
+      return $redirect
+        ->route('role-permissions.index')->with('status', 'The role permission entry has been created!');
+    } catch (Throwable $th) {
+      return $redirect->route('roles-permissions.create')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

@@ -12,12 +12,14 @@ class Activity extends Model
 
   protected $fillable = [
     'title',
-    'description',
+    'content',
+    'user_id'
   ];
 
   public static $columnTypes = [
     'title' => 'text',
-    'description' => 'longText',
+    'content' => 'longText',
+    'user_id' => 'number'
   ];
 
   protected $hidden = [

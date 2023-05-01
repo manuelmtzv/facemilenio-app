@@ -7,9 +7,9 @@
   </div>
 
   <div class="scroll-container overflow-x-auto rounded-lg shadow md:block">
-    <table class="w-full text-black bg-white">
+    <table class="w-full text-black bg-[#FFF4E0]">
 
-      <thead class="bg-gray-800">
+      <thead class="bg-[#41644A]">
         <tr>
           @foreach ($keys as $key)
             <th class="text-white text-sm font-bold text-left p-2">
@@ -21,11 +21,11 @@
       </thead>
       <tbody class="divide-y divide-gray-100">
         @foreach ($values as $value)
-          <tr class="even:bg-gray-200">
+          <tr class="even:bg-[#F3DEBA]">
             @foreach ($keys as $key)
               <td
-                  class="border-none border-t border-gray-400 py-2 px-3 align-top max-w-fit {{ strlen($value->$key) > 80 ? 'long-field' : '' }}">
-                {{ $value->$key }}</td>
+                  class="border-none border-t border-gray-400 py-2 px-3 align-top max-w-[900px] {{ strlen($value->$key) > 80 ? 'long-field' : '' }}">
+                {{ $value->$key ?? 'NA' }}</td>
             @endforeach
 
             <td class="border-none border-t border-gray-400 py-2 px-3 align-top">

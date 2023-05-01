@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Globals */
+body {
+  @apply bg-[#f2e3db] text-black;
+}
+
 /* Aside */
 .aside-link {
-  @apply text-left border-b border-gray-300 py-3 px-10 text-base  hover:bg-gray-100 pl-0;
+  @apply text-left border-b border-[#41644A] py-3 px-10 text-base  hover:bg-gray-100 pl-0;
 }
 
 .show-aside {
@@ -21,11 +26,11 @@
 }
 
 .button {
-  @apply py-2 px-3 bg-white rounded-md hover:bg-gray-100;
+  @apply py-2 px-3 text-black bg-[#FFF4E0] rounded-md hover:bg-gray-100;
 }
 
 .add-entry {
-  @apply p-2 bg-green-200 hover:bg-green-300 rounded-md w-full max-w-xs mx-auto;
+  @apply py-2 px-3 bg-green-200 hover:bg-green-300 rounded-md;
 }
 
 /* Mobile nav */
@@ -43,7 +48,7 @@
 }
 
 .form-container {
-  @apply w-full max-w-lg h-fit my-10 mx-auto px-2 bg-gray-200 rounded-md;
+  @apply w-full max-w-lg h-fit my-10 mx-auto px-2 bg-[#41644a] text-[#e4e6e4] rounded-md;
 }
 
 .form {
@@ -71,7 +76,7 @@
 }
 
 .input {
-  @apply w-full p-2 rounded-md;
+  @apply w-full p-2 rounded-md bg-[#FFF4E0] text-black;
 }
 
 .select {
@@ -79,7 +84,7 @@
 }
 
 .submit {
-  @apply ml-auto py-2 px-6 bg-blue-200 rounded-md hover:bg-blue-300;
+  @apply ml-auto py-2 px-6 rounded-md bg-[#c75b2d] hover:bg-[#E86A33];
 }
 
 .form-error {
@@ -89,4 +94,8 @@
 /* CRUD */
 .crud-container {
   @apply flex flex-col flex-1 overflow-x-auto gap-4;
+}
+
+.create-input {
+  @apply border border-[#41644A] p-2 bg-[#FFF4E0] text-black;
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Store\StoreFriendRequest;
 use App\Models\Friend;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class FriendController extends Controller
 {
@@ -33,9 +35,18 @@ class FriendController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(StoreFriendRequest $request, Redirector $redirect)
   {
-    //
+    $values = $request->validated();
+
+    try {
+      Friend::create($values);
+
+      return $redirect
+        ->route('friends.index')->with('status', 'The friend entry has been created!');
+    } catch (Throwable $th) {
+      return $redirect->route('friends.create')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

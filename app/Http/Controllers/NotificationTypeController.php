@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Store\StoreNotificationTypeRequest;
 use App\Models\NotificationType;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class NotificationTypeController extends Controller
 {
@@ -33,9 +35,18 @@ class NotificationTypeController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(StoreNotificationTypeRequest $request, Redirector $redirect)
   {
-    //
+    $values = $request->validated();
+
+    try {
+      NotificationType::create($values);
+
+      return $redirect
+        ->route('notification-types.index')->with('status', 'The notification type entry has been created!');
+    } catch (Throwable $th) {
+      return $redirect->route('notification-types.create')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

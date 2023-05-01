@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Store;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaveLocationRequest extends FormRequest
+class StoreRoleRequest extends FormRequest
 {
   /**
    * Determine if the user is authorized to make this request.
@@ -21,9 +21,6 @@ class SaveLocationRequest extends FormRequest
    */
   public function rules(): array
   {
-    return [
-      'country' => ['required', 'string'],
-      'city' => ['required', 'string']
-    ];
+    return ['name' => ['required', 'string']];
   }
 }

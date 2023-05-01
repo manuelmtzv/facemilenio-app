@@ -20,60 +20,68 @@ use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-// Landing route
-Route::get('/', LandingController::class)->name('landing');
+// Routes for guests users
+Route::middleware(['guest'])->group(function () {
+  // Landing route
+  Route::get('/', LandingController::class)->name('landing');
 
-// Register routes
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
+  // - Auth process routes - 
 
-// Login routes
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+  // Signup routes
+  Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+  Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 
-// Logout route
-Route::post('/logout', LogoutController::class)->name('logout');
+  // Login routes
+  Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+  Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+});
 
-// Feed route
-Route::get('/feed', FeedController::class)->name('feed');
+// Routes for authenticated users
+Route::middleware(['auth'])->group(function () {
+  // Logout route
+  Route::post('/logout', LogoutController::class)->name('logout');
 
-// - Database resources -
+  // Feed route
+  Route::get('/feed', FeedController::class)->name('feed');
 
-// Activities
-Route::resource('activities', ActivityController::class);
+  // - Database resources -
 
-// Cities
-Route::resource('cities', CityController::class);
+  // Activities
+  Route::resource('activities', ActivityController::class);
 
-// Comments
-Route::resource('comments', CommentController::class);
+  // Cities
+  Route::resource('cities', CityController::class);
 
-// Countries
-Route::resource('countries', CountryController::class);
+  // Comments
+  Route::resource('comments', CommentController::class);
 
-// Friends
-Route::resource('friends', FriendController::class);
+  // Countries
+  Route::resource('countries', CountryController::class);
 
-// Genders
-Route::resource('genders', GenderController::class);
+  // Friends
+  Route::resource('friends', FriendController::class);
 
-// Locations
-Route::resource('locations', LocationController::class);
+  // Genders
+  Route::resource('genders', GenderController::class);
 
-// Notifications
-Route::resource('notifications', NotificationController::class);
+  // Locations
+  Route::resource('locations', LocationController::class);
 
-// Notification-Types
-Route::resource('notification-types', NotificationTypeController::class);
+  // Notifications
+  Route::resource('notifications', NotificationController::class);
 
-// Permissions
-Route::resource('permissions', PermissionController::class);
+  // Notification-Types
+  Route::resource('notification-types', NotificationTypeController::class);
 
-// Roles
-Route::resource('roles', RoleController::class);
+  // Permissions
+  Route::resource('permissions', PermissionController::class);
 
-// Role-Permissions
-Route::resource('role-permissions', RolePermissionController::class);
+  // Roles
+  Route::resource('roles', RoleController::class);
 
-// Users
-Route::resource('users', UserController::class);
+  // Role-Permissions
+  Route::resource('role-permissions', RolePermissionController::class);
+
+  // Users
+  Route::resource('users', UserController::class);
+});

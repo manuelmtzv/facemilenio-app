@@ -1,4 +1,4 @@
-<aside class="hidden w-full max-w-[10rem] pb-3 bg-transparent lg:block">
+<aside class="hidden w-full max-w-[14rem] pb-3 bg-transparent lg:block">
 
   <nav class="flex flex-col">
     @auth

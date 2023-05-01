@@ -13,6 +13,7 @@ return new class extends Migration
   {
     Schema::create('activities', function (Blueprint $table) {
       $table->id()->comment("Unique activity identifier");
+      $table->text("title")->comment("Title of the post")->nullable();
       $table->longText("content")->comment("Text content of the post");
       $table->foreignId("user_id")->constrained()->onDelete("cascade")->onUpdate("cascade");
       $table->string("notes")->nullable()->comment("Notes");

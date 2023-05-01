@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Store\StoreActivityRequest;
 use App\Models\Activity;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\User;
+
 class ActivityController extends Controller
 {
-  public function __construct()
-  {
-    $this->middleware('auth');
-  }
+  // public function __construct()
+  // {
+  //   $this->middleware('auth');
+  // }
 
   /**
    * Display a listing of the resource.
@@ -40,9 +44,18 @@ class ActivityController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(StoreActivityRequest $request, Redirector $redirect)
   {
-    //
+    $values = $request->validated();
+
+    try {
+      Activity::create($values);
+
+      return $redirect
+        ->route('activities.index')->with('status', 'The activity entry has been created!');
+    } catch (Throwable $th) {
+      return $redirect->route('activities.create')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

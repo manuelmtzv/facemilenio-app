@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-5">
-  <h1 class="capitalize text-2xl font-semibold pb-2 border-b border-gray-300">{{ $modelName }} -> id:
+  <h1 class="capitalize text-2xl font-semibold pb-2 border-b border-[#41644A]">{{ $modelName }} -> id:
     {{ $entity->id }}</h1>
 
   <div class="w-full">
@@ -11,7 +11,7 @@
     @endforeach
   </div>
 
-  <a class="button w-min !bg-gray-200 hover:!bg-gray-300" href="{{ URL::previous() }}">
+  <a class="button w-min" href="{{ URL::previous() }}">
     Return
   </a>
 </div>

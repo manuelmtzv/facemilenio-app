@@ -20,7 +20,7 @@ class Comment extends Model
   public static $columnTypes = [
     'user_id' => 'number',
     'activity_id' => 'number',
-    'content' => 'longtext'
+    'content' => 'longText'
   ];
 
   public function activities()

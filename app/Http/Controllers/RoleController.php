@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Store\StoreRoleRequest;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class RoleController extends Controller
 {
@@ -33,9 +35,18 @@ class RoleController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(StoreRoleRequest $request, Redirector $redirect)
   {
-    //
+    $values = $request->validated();
+
+    try {
+      Role::create($values);
+
+      return $redirect
+        ->route('roles.index')->with('status', 'The role entry has been created!');
+    } catch (Throwable $th) {
+      return $redirect->route('roles.create')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

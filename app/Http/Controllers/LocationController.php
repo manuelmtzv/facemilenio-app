@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\City;
-use App\Models\Country;
-use App\Http\Requests\SaveLocationRequest;
+use App\Http\Requests\Store\StoreLocationRequest;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 // Models
-use App\Models\Location;
+use Illuminate\Routing\Redirector;
 
 class LocationController extends Controller
 {
@@ -38,19 +37,18 @@ class LocationController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(SaveLocationRequest $request)
+  public function store(StoreLocationRequest $request, Redirector $redirect)
   {
     $values = $request->validated();
 
-    $country = Country::where('name', $values['country'])->firstOrFail();
-    $city = City::where('name', $values['city'])->firstOrFail();
+    try {
+      Location::create($values);
 
-    $location = Location::create([
-      'country_id' => $country->id,
-      'city_id' => $city->id
-    ]);
-
-    return $location;
+      return $redirect
+        ->route('locations.index')->with('status', 'The location entry has been created!');
+    } catch (Throwable $th) {
+      return $redirect->route('locations.create')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

@@ -3,11 +3,7 @@
 namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\LocationController;
 use App\Http\Requests\RegisterRequest;
-use App\Http\Requests\SaveLocationRequest;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
 
 // Models
 use App\Models\Gender;

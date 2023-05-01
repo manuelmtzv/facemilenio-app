@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Store\StoreNotificationRequest;
 use App\Models\Notification;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -35,9 +37,18 @@ class NotificationController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(StoreNotificationRequest $request, Redirector $redirect)
   {
-    //
+    $values = $request->validated();
+
+    try {
+      Notification::create($values);
+
+      return $redirect
+        ->route('notifications.index')->with('status', 'The notification entry has been created!');
+    } catch (Throwable $th) {
+      return $redirect->route('notifications.create')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
+use App\Http\Requests\Store\StoreUserRequest;
 
 class UserController extends Controller
 {
@@ -28,6 +30,23 @@ class UserController extends Controller
     $columnTypes = User::$columnTypes;
 
     return view('users.create', compact('keys', 'columnTypes'));
+  }
+
+  /**
+   * Store a newly created resource in storage.
+   */
+  public function store(StoreUserRequest $request, Redirector $redirect)
+  {
+    $values = $request->validated();
+
+    try {
+      User::create($values);
+
+      return $redirect
+        ->route('users.index')->with('status', 'The users entry has been created!');
+    } catch (Throwable $th) {
+      return $redirect->route('users.create')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

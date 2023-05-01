@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
+use App\Http\Requests\Store\StoreCommentRequest;
 
 class CommentController extends Controller
 {
@@ -33,9 +35,18 @@ class CommentController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(StoreCommentRequest $request, Redirector $redirect)
   {
-    //
+    $values = $request->validated();
+
+    try {
+      Comment::create($values);
+
+      return $redirect
+        ->route('comments.index')->with('status', 'The comment entry has been created!');
+    } catch (Throwable $th) {
+      return $redirect->route('comments.create')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

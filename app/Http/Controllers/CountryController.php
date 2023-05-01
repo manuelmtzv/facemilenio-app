@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Store\StoreCountryRequest;
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class CountryController extends Controller
 {
@@ -33,20 +35,18 @@ class CountryController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(StoreCountryRequest $request, Redirector $redirect)
   {
-    $this->validate($request, [
-      'name' => 'required'
-    ]);
+    $values = $request->validated();
 
-    $country = Country::where('name', $request->name)->first();
+    try {
+      Country::create($values);
 
-    if (!$country) {
-      $country = Country::create(['name' => $request->name]);
-      return response()->json($country);
+      return $redirect
+        ->route('countries.index')->with('status', 'The country entry has been created!');
+    } catch (Throwable $th) {
+      return $redirect->route('countries.create')->with('status', 'An error has occurred. Try again later.');
     }
-
-    return response()->json($country);
   }
 
   /**

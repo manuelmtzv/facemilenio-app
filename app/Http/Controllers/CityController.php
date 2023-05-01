@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Store\StoreCityRequest;
 use App\Models\City;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class CityController extends Controller
 {
@@ -33,9 +35,18 @@ class CityController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(StoreCityRequest $request, Redirector $redirect)
   {
-    //
+    $values = $request->validated();
+
+    try {
+      City::create($values);
+
+      return $redirect
+        ->route('cities.index')->with('status', 'The city entry has been created!');
+    } catch (Throwable $th) {
+      return $redirect->route('cities.create')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**
