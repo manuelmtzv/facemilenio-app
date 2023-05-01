@@ -1,6 +1,7 @@
 <div class="flex flex-col gap-5 ">
 
   <x-utilities.with-message message-prop="status" />
+  <x-utilities.with-message message-prop="error" />
 
   <div class="flex justify-between content-center">
     <h1 class="capitalize text-2xl font-semibold">{{ $tableName }}</h1>

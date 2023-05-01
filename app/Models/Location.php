@@ -23,11 +23,11 @@ class Location extends Model
 
   public function cities()
   {
-    $this->hasOne(City::class);
+    $this->belongsToMany(City::class);
   }
 
   public function countries()
   {
-    $this->hasOne(Country::class);
+    $this->belongsToMany(Country::class);
   }
 }

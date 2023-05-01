@@ -93,10 +93,14 @@ class ActivityController extends Controller
    */
   public function destroy(Activity $activity, Redirector $redirect)
   {
-    $activity->delete();
+    try {
+      $activity->delete();
 
-    return $redirect
-      ->route('activities.index')->with('status', 'The activity entry has been deleted!');
+      return $redirect
+        ->route('activities.index')->with('status', 'The activity entry has been deleted!');
+    } catch (Throwable $th) {
+      return $redirect->route('activities.index')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   public function getAll()

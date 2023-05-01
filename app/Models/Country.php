@@ -21,6 +21,6 @@ class Country extends Model
 
   public function locations()
   {
-    return $this->belongsTo(Location::class);
+    return $this->hasMany(Location::class);
   }
 }
