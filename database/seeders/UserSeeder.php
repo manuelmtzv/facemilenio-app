@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
       'name' => 'Adriana',
       'surname' => 'Castillo',
       'email' => 'adri34@gmail.com',
-      'password' => Hash::make('adri284$'),
+      'password' => Hash::make('nachHD816'),
       'location_id' => 1,
       'gender_id' => 1,
       'birthdate' => '2001-03-05',

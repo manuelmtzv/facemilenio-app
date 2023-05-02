@@ -7,7 +7,7 @@
       <div class="entry-container">
         <label class="label" for="email">
           Email
-          <input class="input" id="email" name="email" type="email">
+          <input class="input" id="email" name="email" type="email" value="{{ old('email') }}">
           @error('email')
             <small class="form-error">{{ $message }}</small>
           @enderror

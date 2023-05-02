@@ -36,7 +36,8 @@ class LoginController extends Controller
         ->with('status', 'You are logged in!');
     }
 
-    throw ValidationException::withMessages([
+
+    return throw ValidationException::withMessages([
       'email' => 'Auth failed. Try again later'
     ]);
   }

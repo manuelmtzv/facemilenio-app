@@ -23,7 +23,7 @@ class Activity extends Model
   ];
 
   protected $hidden = [
-    'notes', 'is_active', 'created_at', 'updated_at'
+    'notes', 'is_active', 'updated_at'
   ];
 
   public function comments()
@@ -31,7 +31,7 @@ class Activity extends Model
     return $this->hasMany(Comment::class);
   }
 
-  public function users()
+  public function user()
   {
     return $this->belongsTo(User::class);
   }

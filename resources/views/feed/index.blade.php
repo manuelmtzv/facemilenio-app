@@ -1,8 +1,14 @@
 <x-layouts.app title="Feed">
   <div class="feed container">
-    <div class="feed__container flex justify-center items-center h-full">
+    <div class="feed__container flex flex-col">
       @if (auth()->user()->role->name === 'User')
-        <p class="text-semibold text-2xl">User Dashboard</p>
+        <h2 class="text-semibold text-2xl">User Feed: </h2>
+
+        {{-- Formulario para crear posts --}}
+        <x-forms.create-activity />
+
+        {{-- Listado de actividades --}}
+        <x-sections.activities :activities="$activities" />
       @else
         <p class="text-semibold text-2xl">Admin Dashboard</p>
       @endif

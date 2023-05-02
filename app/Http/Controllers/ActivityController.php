@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Ramsey\Uuid\Type\Integer;
 
 class ActivityController extends Controller
@@ -52,15 +53,25 @@ class ActivityController extends Controller
    */
   public function store(StoreActivityRequest $request, Redirector $redirect)
   {
-    $values = $request->validated();
-
     try {
+      $values = $request->validated();
       Activity::create($values);
 
-      return $redirect
-        ->route('activities.index')->with('status', 'The activity entry has been created!');
+      if (auth()->user()->role->name === 'Admin') {
+        return $redirect
+          ->route('activities.index')->with('status', 'The activity entry has been created!');
+      }
+
+      // Redirección al feed del usuario
+      return $redirect->route('feed')->with('status', 'The activity entry has been created!');
     } catch (Throwable $th) {
-      return $redirect->route('activities.create')->with('status', 'An error has occurred. Try again later.');
+      if (auth()->user()->role->name === 'Admin') {
+
+        return $redirect->route('activities.create')->with('status', 'An error has occurred. Try again later.');
+      }
+
+      // Redirección al feed del usuario (con errores)
+      return $redirect->route('feed')->with('status', 'An error has occurred. Try again later.');
     }
   }
 
