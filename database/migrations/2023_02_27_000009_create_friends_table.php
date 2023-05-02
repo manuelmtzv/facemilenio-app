@@ -13,8 +13,8 @@ return new class extends Migration
   {
     Schema::create('friends', function (Blueprint $table) {
       $table->id()->comment("Unique friends relation identifier");
-      $table->foreignId("user_id")->constrained()->onUpdate("cascade");
-      $table->foreignId("friend_id")->constrained("users")->onUpdate("cascade");
+      $table->foreignId("user_id")->constrained()->onDelete('cascade')->onUpdate("cascade");
+      $table->foreignId("friend_id")->constrained("users")->onDelete('cascade')->onUpdate("cascade");
       $table->boolean("is_requested")->comment("Shows if the friend request has been placed");
       $table->boolean("is_accepted")->comment("Shows if the friend request has been accepted");
       $table->string("notes")->nullable()->comment("Notes");

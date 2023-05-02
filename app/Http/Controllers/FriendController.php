@@ -83,9 +83,21 @@ class FriendController extends Controller
    */
   public function destroy(Friend $friend, Redirector $redirect)
   {
-    $friend->delete();
 
-    return $redirect
-      ->route('friends.index')->with('status', 'The friend entry has been deleted!');
+    try {
+      $friend->delete();
+
+      return $redirect
+        ->route('friends.index')->with('status', 'The friend entry has been deleted!');
+    } catch (Throwable | QueryException $e) {
+      switch (get_class($e)) {
+        case QueryException::class:
+          return $redirect->route('friends.index')->with(['error' => 'There is a conflict of constraints with this action.', 'information' => $e->getMessage()]);
+          break;
+        default:
+          return $redirect->route('friends.index')->with('error', 'An error has occurred. Try again later.');
+          break;
+      }
+    }
   }
 }

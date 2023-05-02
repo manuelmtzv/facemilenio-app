@@ -83,9 +83,21 @@ class CommentController extends Controller
    */
   public function destroy(Comment $comment, Redirector $redirect)
   {
-    $comment->delete();
 
-    return $redirect
-      ->route('comments.index')->with('status', 'The comment entry has been deleted!');
+    try {
+      $comment->delete();
+
+      return $redirect
+        ->route('comments.index')->with('status', 'The comment entry has been deleted!');
+    } catch (Throwable | QueryException $e) {
+      switch (get_class($e)) {
+        case QueryException::class:
+          return $redirect->route('comments.index')->with(['error' => 'There is a conflict of constraints with this action.', 'information' => $e->getMessage()]);
+          break;
+        default:
+          return $redirect->route('comments.index')->with('error', 'An error has occurred. Try again later.');
+          break;
+      }
+    }
   }
 }

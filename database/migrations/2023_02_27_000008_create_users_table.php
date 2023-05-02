@@ -18,12 +18,12 @@ return new class extends Migration
       $table->string("surname")->comment("User surname");
       $table->string("email")->unique()->comment("User email");
       $table->string("password")->comment("User password");
-      $table->foreignId("role_id")->constrained()->onUpdate("cascade");
+      $table->foreignId("role_id")->nullable()->constrained()->onDelete('set null')->onUpdate("cascade");
       $table->foreignId("gender_id")->constrained()->onUpdate("cascade");
       $table->date("birthdate")->comment("User birthdate");
       $table->tinyText("url_profile")->nullable()->comment("URL of the profile image of the user")->nullable();
       $table->longText("biography")->comment("User autobiography")->nullable();
-      $table->foreignId("location_id")->nullable()->constrained()->onUpdate("cascade");
+      $table->foreignId("location_id")->nullable()->constrained()->onDelete('set null')->onUpdate("cascade");
       $table->rememberToken();
       $table->string("notes")->nullable()->comment("Notes");
       $table->boolean("is_active")->default(1)->comment("Shows if it's active");

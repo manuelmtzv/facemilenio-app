@@ -13,8 +13,8 @@ return new class extends Migration
   {
     Schema::create('role_permissions', function (Blueprint $table) {
       $table->id()->comment("Unique role-permission relation identifier");
-      $table->foreignId("role_id")->constrained()->onUpdate("cascade");
-      $table->foreignId("permission_id")->constrained()->onUpdate("cascade");
+      $table->foreignId("role_id")->nullable()->constrained()->onDelete('set null')->onUpdate("cascade");
+      $table->foreignId("permission_id")->nullable()->constrained()->onDelete('set null')->onUpdate("cascade");
       $table->string("notes")->nullable()->comment("Notes");
       $table->boolean("is_active")->default(1)->comment("Shows if it's active");
       $table->timestamps();

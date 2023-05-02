@@ -13,8 +13,8 @@ return new class extends Migration
   {
     Schema::create('locations', function (Blueprint $table) {
       $table->id()->comment("Unique location identifier");
-      $table->foreignId("city_id")->constrained("cities")->onUpdate("cascade");
-      $table->foreignId("country_id")->constrained("countries")->onUpdate("cascade");
+      $table->foreignId("country_id")->constrained("countries")->onDelete('cascade')->onUpdate("cascade");
+      $table->foreignId("city_id")->nullable()->constrained("cities")->onDelete('set null')->onUpdate("cascade");
       $table->string("notes")->nullable()->comment("Notes");
       $table->boolean("is_active")->default(1)->comment("Shows if it's active");
       $table->timestamps();

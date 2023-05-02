@@ -83,9 +83,21 @@ class GenderController extends Controller
    */
   public function destroy(Gender $gender, Redirector $redirect)
   {
-    $gender->delete();
 
-    return $redirect
-      ->route('genders.index')->with('status', 'The gender entry has been deleted!');
+    try {
+      $gender->delete();
+
+      return $redirect
+        ->route('genders.index')->with('status', 'The gender entry has been deleted!');
+    } catch (Throwable | QueryException $e) {
+      switch (get_class($e)) {
+        case QueryException::class:
+          return $redirect->route('genders.index')->with(['error' => 'There is a conflict of constraints with this action.', 'information' => $e->getMessage()]);
+          break;
+        default:
+          return $redirect->route('genders.index')->with('error', 'An error has occurred. Try again later.');
+          break;
+      }
+    }
   }
 }

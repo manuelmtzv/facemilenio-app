@@ -83,9 +83,20 @@ class CityController extends Controller
    */
   public function destroy(City $city, Redirector $redirect)
   {
-    $city->delete();
+    try {
+      $city->delete();
 
-    return $redirect
-      ->route('cities.index')->with('status', 'The city entry has been deleted!');
+      return $redirect
+        ->route('cities.index')->with('status', 'The city entry has been deleted!');
+    } catch (Throwable | QueryException $e) {
+      switch (get_class($e)) {
+        case QueryException::class:
+          return $redirect->route('cities.index')->with(['error' => 'There is a conflict of constraints with this action.', 'information' => $e->getMessage()]);
+          break;
+        default:
+          return $redirect->route('cities.index')->with('error', 'An error has occurred. Try again later.');
+          break;
+      }
+    }
   }
 }

@@ -83,9 +83,21 @@ class UserController extends Controller
    */
   public function destroy(User $user, Redirector $redirect)
   {
-    $user->delete();
 
-    return $redirect
-      ->route('users.index')->with('status', 'The user entry has been deleted!');
+    try {
+      $user->delete();
+
+      return $redirect
+        ->route('users.index')->with('status', 'The user entry has been deleted!');
+    } catch (Throwable | QueryException $e) {
+      switch (get_class($e)) {
+        case QueryException::class:
+          return $redirect->route('users.index')->with(['error' => 'There is a conflict of constraints with this action.', 'information' => $e->getMessage()]);
+          break;
+        default:
+          return $redirect->route('users.index')->with('error', 'An error has occurred. Try again later.');
+          break;
+      }
+    }
   }
 }

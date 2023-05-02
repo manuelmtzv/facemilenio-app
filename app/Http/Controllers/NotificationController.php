@@ -85,9 +85,20 @@ class NotificationController extends Controller
    */
   public function destroy(Notification $notification, Redirector $redirect)
   {
-    $notification->delete();
+    try {
+      $notification->delete();
 
-    return $redirect
-      ->route('notifications.index')->with('status', 'The notification entry has been deleted!');
+      return $redirect
+        ->route('notifications.index')->with('status', 'The notification entry has been deleted!');
+    } catch (Throwable | QueryException $e) {
+      switch (get_class($e)) {
+        case QueryException::class:
+          return $redirect->route('notifications.index')->with(['error' => 'There is a conflict of constraints with this action.', 'information' => $e->getMessage()]);
+          break;
+        default:
+          return $redirect->route('notifications.index')->with('error', 'An error has occurred. Try again later.');
+          break;
+      }
+    }
   }
 }

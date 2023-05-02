@@ -83,9 +83,21 @@ class RolePermissionController extends Controller
    */
   public function destroy(RolePermission $rolePermission, Redirector $redirect)
   {
-    $rolePermission->delete();
 
-    return $redirect
-      ->route('role-permissions.index')->with('status', 'The role permission entry has been deleted!');
+    try {
+      $rolePermission->delete();
+
+      return $redirect
+        ->route('role-permissions.index')->with('status', 'The role permission entry has been deleted!');
+    } catch (Throwable | QueryException $e) {
+      switch (get_class($e)) {
+        case QueryException::class:
+          return $redirect->route('role-permissions.index')->with(['error' => 'There is a conflict of constraints with this action.', 'information' => $e->getMessage()]);
+          break;
+        default:
+          return $redirect->route('role-permissions.index')->with('error', 'An error has occurred. Try again later.');
+          break;
+      }
+    }
   }
 }

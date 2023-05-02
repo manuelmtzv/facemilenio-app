@@ -83,9 +83,21 @@ class RoleController extends Controller
    */
   public function destroy(Role $role, Redirector $redirect)
   {
-    $role->delete();
 
-    return $redirect
-      ->route('roles.index')->with('status', 'The role entry has been deleted!');
+    try {
+      $role->delete();
+
+      return $redirect
+        ->route('roles.index')->with('status', 'The role entry has been deleted!');
+    } catch (Throwable | QueryException $e) {
+      switch (get_class($e)) {
+        case QueryException::class:
+          return $redirect->route('roles.index')->with(['error' => 'There is a conflict of constraints with this action.', 'information' => $e->getMessage()]);
+          break;
+        default:
+          return $redirect->route('roles.index')->with('error', 'An error has occurred. Try again later.');
+          break;
+      }
+    }
   }
 }

@@ -1,4 +1,4 @@
-<section class="py-2">
+<section class="py-2 px-2">
   <div class="flex flex-col gap-4">
     <h4 class="text-xl font-semibold">Nothing to show</h4>
 
