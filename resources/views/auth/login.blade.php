@@ -26,6 +26,10 @@
           <span>Remember me</span>
         </label>
 
+        @error('auth')
+          <small class="form-error">{{ $message }}</small>
+        @enderror
+
         <button class="submit" type="submit">Login</button>
       </div>
     </form>

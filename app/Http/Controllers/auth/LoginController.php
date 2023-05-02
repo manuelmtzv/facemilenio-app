@@ -36,9 +36,8 @@ class LoginController extends Controller
         ->with('status', 'You are logged in!');
     }
 
-
-    return throw ValidationException::withMessages([
-      'email' => 'Auth failed. Try again later'
+    return redirect()->back()->withErrors([
+      'auth' => 'The provided credentials do not match our records. Try again or signup.',
     ]);
   }
 }
