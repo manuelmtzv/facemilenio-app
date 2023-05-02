@@ -7,7 +7,7 @@
     <h1 class="capitalize text-2xl font-semibold">{{ $tableName }}</h1>
 
     <a class="button !bg-green-200 hover:!bg-green-300" href="{{ route(strtolower($tableName) . '.create') }}">Add
-      entry</a>
+      record</a>
   </div>
 
   <div class="scroll-container overflow-x-auto rounded-lg shadow md:block">

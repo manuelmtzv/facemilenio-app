@@ -39,7 +39,7 @@
           Return
         </a>
 
-        <button class="add-entry" type="submit">Add entry</button>
+        <button class="add-entry" type="submit">Add record</button>
       </div>
     </form>
   </div>

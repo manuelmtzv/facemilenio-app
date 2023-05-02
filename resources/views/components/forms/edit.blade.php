@@ -41,7 +41,7 @@
           Return
         </a>
 
-        <button class="add-entry" type="submit">Add entry</button>
+        <button class="add-entry" type="submit">Update</button>
       </div>
     </form>
   </div>
