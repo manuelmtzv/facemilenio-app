@@ -60,7 +60,7 @@ class RolePermissionController extends Controller
   {
     $keys = array_keys($rolePermission->toArray());
 
-    return view('activities.show', ['entity' => $rolePermission, 'keys' => $keys]);
+    return view('role-permissions.show', ['entity' => $rolePermission, 'keys' => $keys]);
   }
 
   /**

@@ -60,7 +60,7 @@ class UserController extends Controller
   {
     $keys = array_keys($user->toArray());
 
-    return view('activities.show', ['entity' => $user, 'keys' => $keys]);
+    return view('users.show', ['entity' => $user, 'keys' => $keys]);
   }
 
   /**

@@ -60,7 +60,7 @@ class NotificationTypeController extends Controller
   {
     $keys = array_keys($notificationType->toArray());
 
-    return view('activities.show', ['entity' => $notificationType, 'keys' => $keys]);
+    return view('notification-types.show', ['entity' => $notificationType, 'keys' => $keys]);
   }
 
   /**

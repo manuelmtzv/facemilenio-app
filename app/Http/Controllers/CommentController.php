@@ -60,7 +60,7 @@ class CommentController extends Controller
   {
     $keys = array_keys($comment->toArray());
 
-    return view('activities.show', ['entity' => $comment, 'keys' => $keys]);
+    return view('comments.show', ['entity' => $comment, 'keys' => $keys]);
   }
 
   /**

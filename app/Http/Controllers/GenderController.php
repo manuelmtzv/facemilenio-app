@@ -60,7 +60,7 @@ class GenderController extends Controller
   {
     $keys = array_keys($gender->toArray());
 
-    return view('activities.show', ['entity' => $gender, 'keys' => $keys]);
+    return view('genders.show', ['entity' => $gender, 'keys' => $keys]);
   }
 
   /**

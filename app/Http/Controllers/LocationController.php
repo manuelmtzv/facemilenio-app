@@ -62,7 +62,7 @@ class LocationController extends Controller
   {
     $keys = array_keys($location->toArray());
 
-    return view('activities.show', ['entity' => $location, 'keys' => $keys]);
+    return view('locations.show', ['entity' => $location, 'keys' => $keys]);
   }
 
   /**

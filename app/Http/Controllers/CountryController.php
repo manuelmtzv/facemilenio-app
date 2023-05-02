@@ -62,7 +62,7 @@ class CountryController extends Controller
   {
     $keys = array_keys($country->toArray());
 
-    return view('activities.show', ['entity' => $country, 'keys' => $keys]);
+    return view('countries.show', ['entity' => $country, 'keys' => $keys]);
   }
 
   /**

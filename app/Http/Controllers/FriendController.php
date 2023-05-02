@@ -60,7 +60,7 @@ class FriendController extends Controller
   {
     $keys = array_keys($friend->toArray());
 
-    return view('activities.show', ['entity' => $friend, 'keys' => $keys]);
+    return view('friends.show', ['entity' => $friend, 'keys' => $keys]);
   }
 
   /**

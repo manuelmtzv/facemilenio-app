@@ -60,7 +60,7 @@ class CityController extends Controller
   {
     $keys = array_keys($city->toArray());
 
-    return view('activities.show', ['entity' => $city, 'keys' => $keys]);
+    return view('cities.show', ['entity' => $city, 'keys' => $keys]);
   }
 
   /**

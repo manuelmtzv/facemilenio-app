@@ -60,7 +60,7 @@ class PermissionController extends Controller
   {
     $keys = array_keys($permission->toArray());
 
-    return view('activities.show', ['entity' => $permission, 'keys' => $keys]);
+    return view('permissions.show', ['entity' => $permission, 'keys' => $keys]);
   }
 
   /**
