@@ -32,6 +32,6 @@
 
   </fieldset>
 
-  <button class="add-entry border border-[#41644A] mt-4" type="submit">Add record</button>
+  <button class="add-entry border border-[#41644A] mt-4" type="submit">Create activity</button>
 
 </form>
