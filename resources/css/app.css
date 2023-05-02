@@ -7,6 +7,10 @@ body {
   @apply bg-[#f2e3db] text-black;
 }
 
+img {
+  @apply max-w-max w-full;
+}
+
 /* Aside */
 .aside-link {
   @apply text-left border-b border-[#41644A] py-3 px-10 text-base  hover:bg-gray-100 pl-0;
@@ -16,13 +20,18 @@ body {
   @apply !left-0;
 }
 
+/* Header */
+.logo {
+  @apply text-[#F6FFDE] text-3xl font-bold md:text-4xl;
+}
+
 /* Helpers */
 /* .container {
   @apply w-[min(1200px,90%)] flex-1 max-w-full overflow-auto;
 } */
 
 .content {
-  @apply container w-[90%] mx-auto;
+  @apply container mx-auto w-[90%] lg:w-[80%] xl:w-[70%];
 }
 
 .button {

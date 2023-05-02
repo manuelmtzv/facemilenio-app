@@ -1,6 +1,6 @@
 <header class="bg-[#41644A] text-[#F0F0F0] flex py-8">
   <div class="content flex justify-between items-center">
-    <h1 class=" text-[#F6FFDE] text-3xl font-bold">Facemilenio</h1>
+    <h1 class="logo">Facemilenio</h1>
 
     <nav class="items-center gap-5 hidden lg:flex">
       @auth

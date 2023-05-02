@@ -4,6 +4,10 @@
     <h3 class="font-semibold text-lg">
       @auth
         {{ auth()->user()->username }}
+
+        @if (auth()->user()->role->name === 'Admin')
+          (admin)
+        @endif
       @else
         Facemilenio
       @endauth

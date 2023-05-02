@@ -2,7 +2,7 @@
      class="mobile-nav fixed w-[70%] top-0 bottom-0 admin-aside ease-in-out duration-300 left-[-100%] bg-inherit overflow-y-auto ">
   <div class="bg-[#41644A]
   flex py-8 px-10">
-    <h1 class="text-3xl font-bold text-[#f6ffde]">Facemilenio</h1>
+    <h1 class="logo">Facemilenio</h1>
   </div>
 
   <nav class="flex flex-col px-10 py-6 gap-4">

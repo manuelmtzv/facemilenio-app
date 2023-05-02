@@ -3,7 +3,10 @@
   <nav class="flex flex-col">
     @auth
       @if (auth()->user()->role->name === 'User')
-        <p>You are user</p>
+        <div class="routes-group">
+          <h4 class="font-bold">Navigation Routes</h4>
+          <a class="aside-link" href="{{ route('feed') }}">Home</a>
+        </div>
       @else
         <div class="routes-group">
           <h4 class="font-bold">CRUD Routes</h4>
