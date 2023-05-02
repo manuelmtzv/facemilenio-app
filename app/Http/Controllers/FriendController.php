@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Store\StoreFriendRequest;
+use App\Http\Requests\Update\UpdateFriendRequest;
 use App\Models\Friend;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -65,17 +66,29 @@ class FriendController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Friend $friend)
   {
-    //
+    $record = $friend;
+    $keys = (new Friend)->getFIllable();
+    $columnTypes = Friend::$columnTypes;
+
+    return view('friends.edit', compact('keys', 'columnTypes', 'record'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(UpdateFriendRequest $request, Redirector $redirect, $id)
   {
-    //
+    try {
+      $friend = Friend::find($id);
+      $friend->update($request->validated());
+
+      return $redirect
+        ->route('friends.index')->with('status', 'The friend entry has been updated!');
+    } catch (Throwable $th) {
+      return $redirect->route('friends.edit')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Store\StorePermissionRequest;
+use App\Http\Requests\Update\UpdatePermissionRequest;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -65,17 +66,29 @@ class PermissionController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Permission $permission)
   {
-    //
+    $record = $permission;
+    $keys = (new Permission)->getFIllable();
+    $columnTypes = Permission::$columnTypes;
+
+    return view('permissions.edit', compact('keys', 'columnTypes', 'record'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(UpdatePermissionRequest $request, Redirector $redirect, $id)
   {
-    //
+    try {
+      $permission = Permission::find($id);
+      $permission->update($request->validated());
+
+      return $redirect
+        ->route('permissions.index')->with('status', 'The permission entry has been updated!');
+    } catch (Throwable $th) {
+      return $redirect->route('permissions.edit')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Store\StoreCountryRequest;
+use App\Http\Requests\Update\UpdateCountryRequest;
 use App\Models\Country;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -67,17 +68,29 @@ class CountryController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Country $country)
   {
-    //
+    $record = $country;
+    $keys = (new Country)->getFIllable();
+    $columnTypes = Country::$columnTypes;
+
+    return view('countries.edit', compact('keys', 'columnTypes', 'record'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(UpdateCountryRequest $request, Redirector $redirect, $id)
   {
-    //
+    try {
+      $country = Country::find($id);
+      $country->update($request->validated());
+
+      return $redirect
+        ->route('countries.index')->with('status', 'The country entry has been updated!');
+    } catch (Throwable $th) {
+      return $redirect->route('countries.edit')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

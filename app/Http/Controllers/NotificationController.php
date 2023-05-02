@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Store\StoreNotificationRequest;
+use App\Http\Requests\Update\UpdateNotificationRequest;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -67,17 +68,29 @@ class NotificationController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Notification $notification)
   {
-    //
+    $record = $notification;
+    $keys = (new Notification)->getFIllable();
+    $columnTypes = Notification::$columnTypes;
+
+    return view('notifications.edit', compact('keys', 'columnTypes', 'record'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(UpdateNotificationRequest $request, Redirector $redirect, $id)
   {
-    //
+    try {
+      $notification = Notification::find($id);
+      $notification->update($request->validated());
+
+      return $redirect
+        ->route('notifications.index')->with('status', 'The notification entry has been updated!');
+    } catch (Throwable $th) {
+      return $redirect->route('notifications.edit')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

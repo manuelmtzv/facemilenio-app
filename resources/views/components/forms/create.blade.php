@@ -17,7 +17,7 @@
         @elseif (in_array($columnTypes[$key], ['longText']))
           <label class="capitalize flex flex-col" for={{ $key }}>
             {{ $key }}
-            <textarea class="create-input rounded-md h-32" name={{ $key }} value="{{ old($key) }}"></textarea>
+            <textarea class="create-input rounded-md h-32" name={{ $key }}>{{ old($key) }}</textarea>
             @error($key)
               <small class="form-error">{{ $message }}</small>
             @enderror

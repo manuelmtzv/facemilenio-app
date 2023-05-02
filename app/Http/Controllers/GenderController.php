@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Store\StoreGenderRequest;
+use App\Http\Requests\Update\UpdateGenderRequest;
 use App\Models\Gender;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -65,17 +66,29 @@ class GenderController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Gender $gender)
   {
-    //
+    $record = $gender;
+    $keys = (new Gender)->getFIllable();
+    $columnTypes = Gender::$columnTypes;
+
+    return view('genders.edit', compact('keys', 'columnTypes', 'record'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(UpdateGenderRequest $request, Redirector $redirect, $id)
   {
-    //
+    try {
+      $gender = Gender::find($id);
+      $gender->update($request->validated());
+
+      return $redirect
+        ->route('genders.index')->with('status', 'The gender entry has been updated!');
+    } catch (Throwable $th) {
+      return $redirect->route('genders.edit')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

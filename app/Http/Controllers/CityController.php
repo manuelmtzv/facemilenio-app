@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Store\StoreCityRequest;
+use App\Http\Requests\Update\UpdateCityRequest;
 use App\Models\City;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -65,17 +66,29 @@ class CityController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(City $city)
   {
-    //
+    $record = $city;
+    $keys = (new City)->getFIllable();
+    $columnTypes = City::$columnTypes;
+
+    return view('cities.edit', compact('keys', 'columnTypes', 'record'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(UpdateCityRequest $request, Redirector $redirect, $id)
   {
-    //
+    try {
+      $city = City::find($id);
+      $city->update($request->validated());
+
+      return $redirect
+        ->route('cities.index')->with('status', 'The city entry has been updated!');
+    } catch (Throwable $th) {
+      return $redirect->route('cities.edit')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

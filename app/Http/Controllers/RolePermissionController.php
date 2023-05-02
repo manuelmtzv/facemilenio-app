@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Store\StoreRolePermissionsRequest;
+use App\Http\Requests\Update\UpdateRolePermissionRequest;
 use App\Models\RolePermission;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -65,17 +66,29 @@ class RolePermissionController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(RolePermission $rolePermission)
   {
-    //
+    $record = $rolePermission;
+    $keys = (new RolePermission)->getFIllable();
+    $columnTypes = RolePermission::$columnTypes;
+
+    return view('role-permissions.edit', compact('keys', 'columnTypes', 'record'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(UpdateRolePermissionRequest $request, Redirector $redirect, $id)
   {
-    //
+    try {
+      $rolePermission = RolePermission::find($id);
+      $rolePermission->update($request->validated());
+
+      return $redirect
+        ->route('role-permissions.index')->with('status', 'The role permission entry has been updated!');
+    } catch (Throwable $th) {
+      return $redirect->route('role-permissions.edit')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

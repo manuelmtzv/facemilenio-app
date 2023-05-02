@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Store\StoreLocationRequest;
+use App\Http\Requests\Update\UpdateLocationRequest;
 use App\Models\Location;
 use Illuminate\Http\Request;
 
@@ -67,17 +68,29 @@ class LocationController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Location $location)
   {
-    //
+    $record = $location;
+    $keys = (new Location)->getFIllable();
+    $columnTypes = Location::$columnTypes;
+
+    return view('locations.edit', compact('keys', 'columnTypes', 'record'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(UpdateLocationRequest $request, Redirector $redirect, $id)
   {
-    //
+    try {
+      $location = Location::find($id);
+      $location->update($request->validated());
+
+      return $redirect
+        ->route('locations.index')->with('status', 'The location entry has been updated!');
+    } catch (Throwable $th) {
+      return $redirect->route('locations.edit')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

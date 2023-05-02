@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Store\StoreRoleRequest;
+use App\Http\Requests\Update\UpdateRoleRequest;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -65,17 +66,29 @@ class RoleController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Role $role)
   {
-    //
+    $record = $role;
+    $keys = (new Role)->getFIllable();
+    $columnTypes = Role::$columnTypes;
+
+    return view('roles.edit', compact('keys', 'columnTypes', 'record'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(UpdateRoleRequest $request, Redirector $redirect, $id)
   {
-    //
+    try {
+      $role = Role::find($id);
+      $role->update($request->validated());
+
+      return $redirect
+        ->route('roles.index')->with('status', 'The role entry has been updated!');
+    } catch (Throwable $th) {
+      return $redirect->route('roles.edit')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

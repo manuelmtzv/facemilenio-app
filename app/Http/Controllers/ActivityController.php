@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Store\StoreActivityRequest;
+use App\Http\Requests\Update\UpdateActivityRequest;
 use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use Ramsey\Uuid\Type\Integer;
 
 class ActivityController extends Controller
 {
@@ -75,17 +77,29 @@ class ActivityController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Activity $activity)
   {
-    //
+    $record = $activity;
+    $keys = (new Activity)->getFIllable();
+    $columnTypes = Activity::$columnTypes;
+
+    return view('activities.edit', compact('keys', 'columnTypes', 'record'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(UpdateActivityRequest $request, Redirector $redirect, $id)
   {
-    //
+    try {
+      $activity = Activity::find($id);
+      $activity->update($request->validated());
+
+      return $redirect
+        ->route('activities.index')->with('status', 'The activity entry has been updated!');
+    } catch (Throwable $th) {
+      return $redirect->route('activities.edit')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

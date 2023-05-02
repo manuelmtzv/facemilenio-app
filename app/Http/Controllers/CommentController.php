@@ -6,6 +6,7 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use App\Http\Requests\Store\StoreCommentRequest;
+use App\Http\Requests\Update\UpdateCommentRequest;
 
 class CommentController extends Controller
 {
@@ -65,17 +66,29 @@ class CommentController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Comment $comment)
   {
-    //
+    $record = $comment;
+    $keys = (new Comment)->getFIllable();
+    $columnTypes = Comment::$columnTypes;
+
+    return view('comments.edit', compact('keys', 'columnTypes', 'record'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(UpdateCommentRequest $request, Redirector $redirect, $id)
   {
-    //
+    try {
+      $comment = Comment::find($id);
+      $comment->update($request->validated());
+
+      return $redirect
+        ->route('comments.index')->with('status', 'The comment entry has been updated!');
+    } catch (Throwable $th) {
+      return $redirect->route('comments.edit')->with('status', 'An error has occurred. Try again later.');
+    }
   }
 
   /**

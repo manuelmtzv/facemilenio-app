@@ -37,7 +37,8 @@
                 <div class="flex content-start gap-3">
                   <a class="button !bg-blue-200 hover:!bg-blue-300"
                      href="{{ route(strtolower($tableName) . '.show', $value) }}">View</a>
-                  <a class="button !bg-yellow-200 hover:!bg-yellow-300" href="#">Edit</a>
+                  <a class="button !bg-yellow-200 hover:!bg-yellow-300"
+                     href="{{ route(strtolower($tableName) . '.edit', $value->id) }}">Edit</a>
 
                   <form action="{{ route(strtolower($tableName) . '.destroy', $value->id) }}" method="POST">
                     @csrf
