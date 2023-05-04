@@ -71,6 +71,11 @@ class User extends Authenticatable
     return $this->hasMany(Activity::class);
   }
 
+  public function comments()
+  {
+    return $this->hasMany(Comment::class);
+  }
+
   public function notifications()
   {
     return $this->hasMany(Notification::class);

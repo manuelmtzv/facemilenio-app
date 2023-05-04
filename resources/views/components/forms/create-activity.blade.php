@@ -21,14 +21,7 @@
     <label class="label !hidden">
       User id
       <input class="input !border-[#41644A]" name="user_id" type="text" value="{{ auth()->user()->id }}">
-      @error('title')
-        <small class="form-error">{{ $message }}</small>
-      @enderror
     </label>
-
-    @error('user_id')
-      <small class="form-error">{{ $message }}</small>
-    @enderror
 
   </fieldset>
 

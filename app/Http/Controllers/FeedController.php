@@ -13,7 +13,7 @@ class FeedController extends Controller
    */
   public function __invoke(Request $request)
   {
-    $activities = Activity::with('user:id,username')->get();
+    $activities = Activity::with('user:id,username')->orderBy('created_at', 'desc')->get();
 
     return view('feed.index', compact('activities'));
   }

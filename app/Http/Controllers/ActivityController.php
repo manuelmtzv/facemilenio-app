@@ -80,6 +80,9 @@ class ActivityController extends Controller
    */
   public function show(Activity $activity)
   {
+    $activity->load(['user:id,username', 'comments' => function ($query) {
+      $query->orderBy('created_at', 'desc');
+    }]);
     $keys = array_keys($activity->toArray());
 
     return view('activities.show', ['entity' => $activity, 'keys' => $keys]);

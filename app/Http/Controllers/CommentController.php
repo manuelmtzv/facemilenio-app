@@ -33,7 +33,9 @@ class CommentController extends Controller
     $keys = (new Comment)->getFIllable();
     $columnTypes = Comment::$columnTypes;
 
-    return view('comments.create', compact('keys', 'columnTypes'));
+    if (auth()->user()->role->name === "Admin") {
+      return view('comments.create', compact('keys', 'columnTypes'));
+    }
   }
 
   /**
@@ -44,12 +46,20 @@ class CommentController extends Controller
     $values = $request->validated();
 
     try {
-      Comment::create($values);
+      $comment = Comment::create($values);
 
-      return $redirect
-        ->route('comments.index')->with('status', 'The comment entry has been created!');
+      if (auth()->user()->role->name === 'Admin') {
+        return $redirect
+          ->route('comments.index')->with('status', 'The comment entry has been created!');
+      }
+
+      return redirect()->route('activities.show', $comment->activity_id);
     } catch (Throwable $th) {
-      return $redirect->route('comments.create')->with('status', 'An error has occurred. Try again later.');
+      if (auth()->user()->role->name === 'Admin') {
+        return $redirect->route('comments.create')->with('status', 'An error has occurred. Try again later.');
+      }
+
+      return redirect()->route('activities.show', $comment->activity_id);
     }
   }
 

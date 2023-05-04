@@ -2,7 +2,7 @@
   <div class="feed container">
     <div class="feed__container flex flex-col">
       @if (auth()->user()->role->name === 'User')
-        <h2 class="text-semibold text-2xl">User Feed: </h2>
+        <h2 class="text-semibold text-2xl">What do you have to share?</h2>
 
         {{-- Formulario para crear posts --}}
         <x-forms.create-activity />
