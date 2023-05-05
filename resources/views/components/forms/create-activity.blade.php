@@ -2,6 +2,7 @@
 
   @csrf
   <fieldset class="flex flex-col w-full gap-2">
+    <h3 class="text-xl">Create an activity:</h3>
     <label class="label">
       Title
       <input class="input !border-[#41644A]" name="title" type="text" value="{{ old('title') }}">
