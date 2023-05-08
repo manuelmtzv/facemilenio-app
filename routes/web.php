@@ -43,7 +43,9 @@ Route::middleware(['auth'])->group(function () {
 
   // Feed route
   Route::get('/feed', FeedController::class)->name('feed');
+});
 
+Route::middleware(['admin'])->group(function () {
   // - Database resources -
 
   // Activities
