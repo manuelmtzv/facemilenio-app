@@ -17,6 +17,8 @@ use App\Http\Controllers\NotificationTypeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
+use App\Http\Controllers\user\UserActivityController;
+use App\Http\Controllers\user\UserCommentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,53 +39,66 @@ Route::middleware(['guest'])->group(function () {
 });
 
 // Routes for authenticated users
-Route::middleware(['auth'])->group(function () {
-  // Logout route
-  Route::post('/logout', LogoutController::class)->name('logout');
+Route::middleware(['user'])->group(function () {
+  Route::prefix('user')->group(function () {
+    // Logout route
+    Route::post('/logout', LogoutController::class)->name('logout');
 
-  // Feed route
-  Route::get('/feed', FeedController::class)->name('feed');
+    // Feed route
+    Route::get('/feed', FeedController::class)->name('feed');
+
+    // - Database resources -
+
+    // Activities
+    Route::resource('activities', UserActivityController::class)->names('user.activities');
+
+    // Comments
+    Route::resource('comments', UserCommentController::class)->names('user.comments');;
+  });
 });
 
+// Routes for authenticated admins
 Route::middleware(['admin'])->group(function () {
-  // - Database resources -
+  Route::prefix('admin')->group(function () {
+    // - Database resources -
 
-  // Activities
-  Route::resource('activities', ActivityController::class);
+    // Activities
+    Route::resource('activities', ActivityController::class);
 
-  // Cities
-  Route::resource('cities', CityController::class);
+    // Comments
+    Route::resource('comments', CommentController::class);
 
-  // Comments
-  Route::resource('comments', CommentController::class);
+    // Cities
+    Route::resource('cities', CityController::class);
 
-  // Countries
-  Route::resource('countries', CountryController::class);
+    // Countries
+    Route::resource('countries', CountryController::class);
 
-  // Friends
-  Route::resource('friends', FriendController::class);
+    // Friends
+    Route::resource('friends', FriendController::class);
 
-  // Genders
-  Route::resource('genders', GenderController::class);
+    // Genders
+    Route::resource('genders', GenderController::class);
 
-  // Locations
-  Route::resource('locations', LocationController::class);
+    // Locations
+    Route::resource('locations', LocationController::class);
 
-  // Notifications
-  Route::resource('notifications', NotificationController::class);
+    // Notifications
+    Route::resource('notifications', NotificationController::class);
 
-  // Notification-Types
-  Route::resource('notification-types', NotificationTypeController::class);
+    // Notification-Types
+    Route::resource('notification-types', NotificationTypeController::class);
 
-  // Permissions
-  Route::resource('permissions', PermissionController::class);
+    // Permissions
+    Route::resource('permissions', PermissionController::class);
 
-  // Roles
-  Route::resource('roles', RoleController::class);
+    // Roles
+    Route::resource('roles', RoleController::class);
 
-  // Role-Permissions
-  Route::resource('role-permissions', RolePermissionController::class);
+    // Role-Permissions
+    Route::resource('role-permissions', RolePermissionController::class);
 
-  // Users
-  Route::resource('users', UserController::class);
+    // Users
+    Route::resource('users', UserController::class);
+  });
 });

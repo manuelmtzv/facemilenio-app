@@ -5,9 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Models\User;
 
-class AdminMiddleware
+class UserMiddleware
 {
   /**
    * Handle an incoming request.
@@ -16,8 +15,8 @@ class AdminMiddleware
    */
   public function handle(Request $request, Closure $next): Response
   {
-    if (auth()->check() && auth()->user()->role->name === 'Admin') {
-      dd(auth()->user()->role);
+    if (auth()->check() && auth()->user()->role->name === 'User') {
+
       return $next($request);
     }
 
