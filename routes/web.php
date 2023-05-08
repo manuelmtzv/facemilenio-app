@@ -15,10 +15,12 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\NotificationTypeController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\user\UserActivityController;
 use App\Http\Controllers\user\UserCommentController;
+use App\Http\Controllers\user\UserFriendController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,22 +40,31 @@ Route::middleware(['guest'])->group(function () {
   Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 });
 
+// General authenticated routes
+Route::middleware(['auth'])->group(function () {
+  // Logout route
+  Route::post('/logout', LogoutController::class)->name('logout');
+
+  // Feed route
+  Route::get('/feed', FeedController::class)->name('feed');
+
+  // Profile route
+  Route::get('/profile', ProfileController::class)->name('');
+});
+
 // Routes for authenticated users
 Route::middleware(['user'])->group(function () {
   Route::prefix('user')->group(function () {
-    // Logout route
-    Route::post('/logout', LogoutController::class)->name('logout');
-
-    // Feed route
-    Route::get('/feed', FeedController::class)->name('feed');
-
     // - Database resources -
 
     // Activities
     Route::resource('activities', UserActivityController::class)->names('user.activities');
 
     // Comments
-    Route::resource('comments', UserCommentController::class)->names('user.comments');;
+    Route::resource('comments', UserCommentController::class)->names('user.comments');
+
+    // Friends
+    Route::resource('friends', UserFriendController::class)->names('user.friends');
   });
 });
 
