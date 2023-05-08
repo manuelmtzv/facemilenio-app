@@ -4,7 +4,7 @@
 
     <nav class="items-center gap-5 hidden lg:flex">
       @auth
-        <a href="{{ route('feed') }}">Home</a>
+        <a href="{{ route('feed') }}">Feed</a>
 
         <form action="{{ route('logout') }}" method="POST">
           @csrf

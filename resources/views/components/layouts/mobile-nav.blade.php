@@ -9,7 +9,7 @@
     @auth
       <div class="routes-group">
         <h4 class="font-bold">Navigation Routes:</h4>
-        <a class="aside-link" href="{{ route('feed') }}">Home</a>
+        <a class="aside-link" href="{{ route('feed') }}">Feed</a>
       </div>
 
       @if (auth()->user()->role->name === 'User')

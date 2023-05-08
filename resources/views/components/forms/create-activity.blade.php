@@ -1,4 +1,5 @@
-<form class="flex flex-col items-end pt-8" action="{{ route('activities.store'), auth()->user()->id }}" method="POST">
+<form class="flex flex-col items-end pt-8" action="{{ route('user.activities.store'), auth()->user()->id }}"
+      method="POST">
 
   @csrf
   <fieldset class="flex flex-col w-full gap-2">
