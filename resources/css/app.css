@@ -11,6 +11,10 @@ img {
   @apply max-w-max w-full;
 }
 
+.main {
+  @apply flex-1 flex gap-0 lg:gap-8 mt-8 mb-12;
+}
+
 /* Aside */
 .aside-link {
   @apply text-left border-b border-[#41644A] py-3 px-10 text-base  hover:bg-gray-100 pl-0;

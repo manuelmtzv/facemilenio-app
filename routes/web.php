@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/feed', FeedController::class)->name('feed');
 
   // Profile route
-  Route::get('/profile', ProfileController::class)->name('');
+  Route::get('/profile', ProfileController::class)->name('profile');
 });
 
 // Routes for authenticated users
