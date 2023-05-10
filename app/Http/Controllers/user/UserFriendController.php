@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\user;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UserFriendController extends Controller
 {
@@ -12,6 +13,14 @@ class UserFriendController extends Controller
    */
   public function __invoke()
   {
-    return view('user.friends.index');
+    // $users = User::whereHas('role', function ($query) {
+    //   $query->where('name', 'User');
+    // })->get();
+
+    $users = User::whereHas('role', function ($query) {
+      $query->where('name', 'User');
+    })->where('id', '<>', auth()->user()->id)->get();
+
+    return view('user.friends.index', compact('users'));
   }
 }

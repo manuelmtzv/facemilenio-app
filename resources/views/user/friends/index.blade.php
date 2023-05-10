@@ -10,8 +10,8 @@
       @endif
     </div>
 
-    <section>
-      {{-- Listado de usuarios --}}
-    </section>
+    <div>
+      <x-sections.users :users="$users" />
+    </div>
   </div>
 </x-layouts.app>

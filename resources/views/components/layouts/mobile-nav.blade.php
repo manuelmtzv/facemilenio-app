@@ -10,6 +10,9 @@
       <div class="routes-group">
         <h4 class="font-bold">Navigation Routes:</h4>
         <a class="aside-link" href="{{ route('feed') }}">Feed</a>
+        <a class="aside-link" href="{{ route('profile', auth()->user()->id) }}">Profile</a>
+        <a class="aside-link" href="{{ route('user.friends') }}">Friends</a>
+        <a class="aside-link" href="{{ route('user.notifications.index') }}">Notifications</a>
       </div>
 
       @if (auth()->user()->role->name === 'User')
