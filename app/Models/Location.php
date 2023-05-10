@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\City;
+use App\Models\User;
 use App\Models\Country;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,13 +22,18 @@ class Location extends Model
     'city_id' => 'number',
   ];
 
-  public function cities()
+  public function city()
   {
-    $this->belongsToMany(City::class);
+    return $this->belongsTo(City::class);
   }
 
-  public function countries()
+  public function country()
   {
-    $this->belongsToMany(Country::class);
+    return $this->belongsTo(Country::class);
+  }
+
+  public function user()
+  {
+    return $this->hasOne(User::class);
   }
 }

@@ -16,7 +16,7 @@ img {
 }
 
 .view {
-  @apply rounded-md bg-[#C1D0B5] p-3;
+  @apply rounded-md bg-[#C1D0B5] p-6 shadow-md;
 }
 
 .height-fit {
@@ -34,7 +34,7 @@ img {
 
 /* Header */
 .logo {
-  @apply text-[#F6FFDE] text-3xl font-bold md:text-4xl;
+  @apply text-[#F1F6F9] text-3xl font-bold md:text-4xl;
 }
 
 /* Helpers */
@@ -43,7 +43,7 @@ img {
 } */
 
 .content {
-  @apply container mx-auto;
+  @apply container mx-auto w-[95%];
   /* w-[90%] lg:w-[80%] xl:w-[70%] */
 }
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Role;
+use App\Models\Location;
 use App\Models\Notification;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -40,6 +41,18 @@ class User extends Authenticatable
     'role_id' => 'number'
   ];
 
+  public static $publicAccess = [
+    'username',
+    'name',
+    'surname',
+    'email',
+    'location_id',
+    'gender_id',
+    'birthdate',
+    'biography',
+    'created_at'
+  ];
+
   /**
    * The attributes that should be hidden for serialization.
    *
@@ -49,7 +62,6 @@ class User extends Authenticatable
     'password',
     'remember_token',
     'is_active',
-    'created_at',
     'updated_at',
     'notes'
   ];
@@ -84,6 +96,16 @@ class User extends Authenticatable
   public function role()
   {
     return $this->belongsTo(Role::class);
+  }
+
+  public function location()
+  {
+    return $this->belongsTo(Location::class);
+  }
+
+  public function gender()
+  {
+    return $this->belongsTo(Gender::class);
   }
 
   // Extra functions

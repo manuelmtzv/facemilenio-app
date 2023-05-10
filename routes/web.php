@@ -21,6 +21,8 @@ use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\user\UserActivityController;
 use App\Http\Controllers\user\UserCommentController;
 use App\Http\Controllers\user\UserFriendController;
+use App\Http\Controllers\user\UserNotificationController;
+use App\Http\Controllers\user\UserProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,7 +51,8 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/feed', FeedController::class)->name('feed');
 
   // Profile route
-  Route::get('/profile', ProfileController::class)->name('profile');
+  Route::get('/profile/{id}', UserProfileController::class)->name('profile');
+  // Route::resource('profile', ProfileController::class)->names('profile');
 });
 
 // Routes for authenticated users
@@ -65,6 +68,9 @@ Route::middleware(['user'])->group(function () {
 
     // Friends
     Route::resource('friends', UserFriendController::class)->names('user.friends');
+
+    // Notifications
+    Route::resource('notifications', UserNotificationController::class)->names('user.notifications');
   });
 });
 

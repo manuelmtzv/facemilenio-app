@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-4">
-  <h2 class="text-xl">Activities: </h2>
+  <h2 class="text-xl font-semibold">Activities: </h2>
 
   <section class="flex flex-col gap-4">
     @forelse ($activities as $activity)

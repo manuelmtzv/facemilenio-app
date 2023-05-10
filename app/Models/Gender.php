@@ -20,6 +20,6 @@ class Gender extends Model
 
   public function users()
   {
-    $this->belongsTo(User::class);
+    $this->belongsToMany(User::class);
   }
 }

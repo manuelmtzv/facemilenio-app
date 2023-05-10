@@ -1,4 +1,4 @@
-<header class="bg-[#41644A] text-[#F0F0F0] flex py-8">
+<header class="bg-[#41644A] text-[#F0F0F0] flex py-8 shadow-lg">
   <div class="content flex justify-between items-center">
     <h1 class="logo">Facemilenio</h1>
 
