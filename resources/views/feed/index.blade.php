@@ -1,5 +1,5 @@
 <x-layouts.app title="Feed">
-  <div class="feed container">
+  <div class="feed container view height-fit">
     <div class="feed__container flex flex-col">
       @if (auth()->user()->role->name === 'User')
         <h2 class="font-bold text-2xl">What do you have to share?</h2>

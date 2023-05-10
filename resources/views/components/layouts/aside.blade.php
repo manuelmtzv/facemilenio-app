@@ -1,4 +1,4 @@
-<aside class="hidden w-full max-w-[14rem] pb-3 bg-transparent lg:block">
+<aside class="hidden w-full max-w-[14rem] pb-3 bg-transparent lg:block view !bg-[#D6E8DB]">
 
   <nav class="flex flex-col">
     @auth
@@ -6,6 +6,7 @@
         <div class="routes-group">
           <h4 class="font-bold">Navigation Routes</h4>
           <a class="aside-link" href="{{ route('feed') }}">Feed</a>
+          <a class="aside-link" href="{{ route('profile') }}">Profile</a>
         </div>
       @else
         <div class="routes-group">

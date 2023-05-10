@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-5 ">
+<div class="flex flex-col gap-5 view">
 
   <x-utilities.with-message message-prop="status" />
   <x-utilities.with-message message-prop="error" />

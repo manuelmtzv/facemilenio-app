@@ -1,5 +1,5 @@
 <x-layouts.app title="activities" meta-description="">
-  <div class="container">
+  <div class="container view height-fit">
 
     @if (auth()->user()->role->name == 'Admin')
       <x-utilities.show model-name="activity" back-route="activities.index" :entity="$entity" :keys="$keys" />

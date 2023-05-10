@@ -1,4 +1,4 @@
-<footer class="border-t-[#41644A] border">
+<footer class="border-t-[#41644A] border mt-auto">
   <div class="content flex justify-between py-8">
 
     <h3 class="font-semibold text-lg">
