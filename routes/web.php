@@ -52,7 +52,6 @@ Route::middleware(['auth'])->group(function () {
 
   // Profile route
   Route::get('/profile/{id}', UserProfileController::class)->name('profile');
-  // Route::resource('profile', ProfileController::class)->names('profile');
 });
 
 // Routes for authenticated users
@@ -67,7 +66,7 @@ Route::middleware(['user'])->group(function () {
     Route::resource('comments', UserCommentController::class)->names('user.comments');
 
     // Friends
-    Route::resource('friends', UserFriendController::class)->names('user.friends');
+    Route::get('/friends', UserFriendController::class)->name('user.friends');
 
     // Notifications
     Route::resource('notifications', UserNotificationController::class)->names('user.notifications');

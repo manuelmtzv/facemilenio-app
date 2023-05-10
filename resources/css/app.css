@@ -98,11 +98,11 @@ img {
 }
 
 .input {
-  @apply w-full p-2 rounded-md bg-[#FFF4E0] text-black border border-[#f2e3db];
+  @apply w-full p-2 rounded-md bg-[#d6e8db] text-black border border-[#f2e3db];
 }
 
 .select {
-  @apply p-[10px] bg-white;
+  @apply p-[10px] bg-[#d6e8db];
 }
 
 .submit {

@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
       'email' => 'manuel.mtzv816@gmail.com',
       'password' => Hash::make('nachHD816'),
       'location_id' => 1,
-      'gender_id' => 1,
+      'gender_id' => 2,
       'birthdate' => '2002-12-28',
       'biography' => 'Hola, soy Manuel',
       'role_id' => 2
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
       'email' => 'emu2804@gmail.com',
       'password' => Hash::make('emu2804$'),
       'location_id' => 1,
-      'gender_id' => 1,
+      'gender_id' => 2,
       'birthdate' => '2002-08-28',
       'biography' => 'Hola, soy Emiliano',
       'role_id' => 1

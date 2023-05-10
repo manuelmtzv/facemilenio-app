@@ -54,7 +54,7 @@
           <div class="form-section">
             <label class="label" for="gender">
               Gender
-              <select class="input select !bg-[#fff4e0]" id="gender" name="gender" value="{{ old('gender') }}">
+              <select class="input select" id="gender" name="gender" value="{{ old('gender') }}">
                 <option value="" selected>- select -</option>
                 @foreach ($genders as $gender)
                   <option value="{{ $gender->name }}">{{ $gender->name }}</option>

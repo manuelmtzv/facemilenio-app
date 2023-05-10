@@ -1,5 +1,5 @@
 <x-layouts.app title="Feed">
-  <div class="profile container view height-fit flex flex-col gap-4">
+  <div class="profile container view height-fit flex flex-col gap-5">
     <div class="flex flex-col gap-3 p-4 bg-[#FFF4E0] rounded-md shadow-md">
       <h2 class="text-2xl font-bold">User Profile</h2>
 
@@ -10,7 +10,7 @@
         </div>
 
         <article class="grid grid-cols-2 gap-2 w-full">
-          <div class="flex flex-col justify-between font-semibold">
+          <div class="flex flex-col gap-2 justify-between font-semibold">
             <p>Name: <span class="font-normal">{{ $user->name . ' ' . $user->surname }}</span></p>
             <p>Email: <span class="font-normal">{{ $user->email }}</span></p>
             @if ($user->location)
@@ -20,7 +20,7 @@
             @endif
           </div>
 
-          <div class="flex flex-col justify-between font-semibold">
+          <div class="flex flex-col gap-2 justify-between font-semibold">
             <p>Gender: <span class="font-normal">{{ $user->gender->name }}</span></p>
             <p>Birthdate: <span class="font-normal">{{ $user->birthdate }}</span></p>
             <p>Created at: <span class="font-normal">{{ $user->created_at }}</span></p>

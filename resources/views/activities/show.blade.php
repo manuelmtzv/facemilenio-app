@@ -4,24 +4,26 @@
     @if (auth()->user()->role->name == 'Admin')
       <x-utilities.show model-name="activity" back-route="activities.index" :entity="$entity" :keys="$keys" />
     @else
-      <section class="flex flex-col gap-4
-      ">
-        <article class="flex flex-col gap-4">
-          <header class="flex justify-between items-center">
-            <h2><span class="font-bold">Title:</span> {{ $entity->title }}</h2>
+      <section class="flex flex-col gap-4">
+        <div class="flex flex-col gap-4 p-4 shadow-md rounded-md bg-[#fff4e0]">
+          <article class="flex flex-col gap-4">
+            <header class="flex justify-between items-center">
+              <h2><span class="font-bold">Title:</span> {{ $entity->title }}</h2>
 
-            <p><span class="font-bold">Author: </span>{{ $entity->user->username }}</p>
-          </header>
+              <p><span class="font-bold">Author: </span>{{ $entity->user->username }}</p>
+            </header>
 
-          <div>
-            <span class="font-bold">Content:</span>
-            <p class="text-justify">{{ $entity->content }}</p>
-          </div>
+            <div>
+              <span class="font-bold">Content:</span>
+              <p class="text-justify">{{ $entity->content }}</p>
+            </div>
 
-          <p><span class="font-bold">Date: </span>{{ $entity->created_at }}</p>
-        </article>
+            <p><span class="font-bold">Date: </span>{{ $entity->created_at }}</p>
+          </article>
 
-        <x-forms.create-comment :activity-id="$entity->id" />
+          <x-forms.create-comment :activity-id="$entity->id" />
+
+        </div>
 
         <div class="flex flex-col gap-4">
           <h3 class="font-bold">Comments</h3>

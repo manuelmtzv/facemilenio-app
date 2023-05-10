@@ -6,7 +6,8 @@
     <h3 class="text-xl">Create an activity:</h3>
     <label class="label">
       Title
-      <input class="input !border-[#41644A]" name="title" type="text" value="{{ old('title') }}">
+      <input class="input !border-[#41644A]" name="title" type="text" placeholder="The advice of the day..."
+             value="{{ old('title') }}">
       @error('title')
         <small class="form-error">{{ $message }}</small>
       @enderror
@@ -14,7 +15,7 @@
 
     <label class="label">
       Content
-      <textarea class="input !border-[#41644A]" name="content">{{ old('content') }}</textarea>
+      <textarea class="input !border-[#41644A]" placeholder="Today I learned that..." name="content">{{ old('content') }}</textarea>
       @error('content')
         <small class="form-error">{{ $message }}</small>
       @enderror
