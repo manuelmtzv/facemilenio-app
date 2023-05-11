@@ -61,7 +61,7 @@ class UserSeeder extends Seeder
       'password' => Hash::make('oscar123'),
       'location_id' => 1,
       'gender_id' => 2,
-      'birthdate' => '2001-03-05',
+      'birthdate' => '2002-07-15',
       'biography' => 'Hola, soy Óscar',
       'role_id' => 1
     ]);
@@ -74,7 +74,7 @@ class UserSeeder extends Seeder
       'password' => Hash::make('karina123'),
       'location_id' => 1,
       'gender_id' => 1,
-      'birthdate' => '2001-03-05',
+      'birthdate' => '2000-09-22',
       'biography' => 'Hola, soy Karina',
       'role_id' => 1
     ]);
