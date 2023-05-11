@@ -22,25 +22,29 @@ class FriendshipController extends Controller
     return redirect()->route('profile', $user->id);
   }
 
-  public function acceptRequest(Request $request, Friend $friendship)
+  public function acceptRequest(Request $request, Friend $friend)
   {
+    $user = auth()->user();
+
     // Check that the authenticated user is the friend recipient
-    if ($friendship->friend_id !== auth()->user()->id) {
+    if ($friend->friend_id !== $user->id) {
       abort(403);
     }
 
-    $friendship->update([
+    $friend->update([
       'is_accepted' => true,
     ]);
 
     // Redirect back to the user's profile page
-    return redirect()->route('user.profile', $friendship->user);
+    return redirect()->route('user.friends');
   }
 
   public function declineRequest(Request $request, Friend $friend)
   {
+    $user = auth()->user();
+
     // Check that the authenticated user is the friend recipient
-    if ($friend->friend_id !== auth()->user()->id) {
+    if ($friend->friend_id !== $user->id) {
       abort(403);
     }
 
@@ -48,6 +52,6 @@ class FriendshipController extends Controller
     $friend->delete();
 
     // Redirect back to the user's profile page
-    return redirect()->route('user.profile', $friend->user);
+    return redirect()->route('user.friends');
   }
 }

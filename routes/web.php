@@ -70,7 +70,7 @@ Route::middleware(['user'])->group(function () {
     Route::get('/friends', UserFriendController::class)->name('user.friends');
 
     // Notifications
-    Route::resource('notifications', UserNotificationController::class)->names('user.notifications');
+    Route::get('notifications', [UserNotificationController::class, 'index'])->name('user.notifications.index');
 
     // - Friendship -
 
@@ -78,10 +78,10 @@ Route::middleware(['user'])->group(function () {
     Route::post('/profile/{user}', [FriendshipController::class, 'sendRequest'])->name('user.friendship');
 
     // Accept
-    Route::patch('/notifications/{friendship}', [FriendshipController::class, 'acceptRequest'])->name('user.friendship');
+    Route::patch('/notifications/{friend}', [FriendshipController::class, 'acceptRequest'])->name('user.friendship.accept');
 
     // Decline 
-    Route::delete('/friends/{friend}', [FriendshipController::class, 'declineRequest'])->name('user.friendship');
+    Route::delete('/notifications/{friend}', [FriendshipController::class, 'declineRequest'])->name('user.friendship.decline');
   });
 });
 

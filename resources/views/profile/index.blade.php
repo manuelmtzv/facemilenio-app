@@ -31,7 +31,7 @@
       <p class="text-justify">{{ $user->biography }}</p>
     </div>
 
-    @if (!auth()->user()->isFriendWith($user))
+    @if (!auth()->user()->isFriendWith($user) && auth()->user()->id != $user->id)
       <form class="flex" action="{{ route('user.friendship', $user) }}" method="post">
         @csrf
         <button class="button ml-auto !bg-green-300" type="submit">Send Friend Request</button>
