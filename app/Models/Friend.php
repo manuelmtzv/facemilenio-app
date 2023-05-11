@@ -24,8 +24,8 @@ class Friend extends Model
     'is_accepted' => 'number',
   ];
 
-  public function users()
+  public function user()
   {
-    $this->belongsTo(User::class);
+    return $this->belongsTo(User::class, 'user_id');
   }
 }

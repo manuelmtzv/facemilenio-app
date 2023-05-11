@@ -52,5 +52,31 @@ class UserSeeder extends Seeder
       'biography' => 'Hola, soy Adriana',
       'role_id' => 1
     ]);
+
+    User::create([
+      'username' => 'oscar',
+      'name' => 'Óscar',
+      'surname' => 'Silva',
+      'email' => 'oscar.s@gmail.com',
+      'password' => Hash::make('oscar123'),
+      'location_id' => 1,
+      'gender_id' => 2,
+      'birthdate' => '2001-03-05',
+      'biography' => 'Hola, soy Óscar',
+      'role_id' => 1
+    ]);
+
+    User::create([
+      'username' => 'kari',
+      'name' => 'Karina',
+      'surname' => 'García',
+      'email' => 'karina.g@gmail.com',
+      'password' => Hash::make('karina123'),
+      'location_id' => 1,
+      'gender_id' => 1,
+      'birthdate' => '2001-03-05',
+      'biography' => 'Hola, soy Karina',
+      'role_id' => 1
+    ]);
   }
 }

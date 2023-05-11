@@ -1,30 +1,31 @@
 <?php
 
-use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\auth\LoginController;
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\auth\RegisterController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FeedController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\FriendController;
 use App\Http\Controllers\GenderController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\LandingController;
-use App\Http\Controllers\LocationController;
-use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\NotificationTypeController;
-use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\RolePermissionController;
-use App\Http\Controllers\user\UserActivityController;
-use App\Http\Controllers\user\UserCommentController;
+use App\Http\Controllers\user\FriendshipController;
 use App\Http\Controllers\user\UserFriendController;
-use App\Http\Controllers\user\UserNotificationController;
+use App\Http\Controllers\NotificationTypeController;
+use App\Http\Controllers\user\UserCommentController;
 use App\Http\Controllers\user\UserProfileController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\user\UserActivityController;
+use App\Http\Controllers\user\UserNotificationController;
 
 // Routes for guests users
 Route::middleware(['guest'])->group(function () {
@@ -70,6 +71,17 @@ Route::middleware(['user'])->group(function () {
 
     // Notifications
     Route::resource('notifications', UserNotificationController::class)->names('user.notifications');
+
+    // - Friendship -
+
+    // Send
+    Route::post('/profile/{user}', [FriendshipController::class, 'sendRequest'])->name('user.friendship');
+
+    // Accept
+    Route::patch('/notifications/{friendship}', [FriendshipController::class, 'acceptRequest'])->name('user.friendship');
+
+    // Decline 
+    Route::delete('/friends/{friend}', [FriendshipController::class, 'declineRequest'])->name('user.friendship');
   });
 });
 

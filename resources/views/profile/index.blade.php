@@ -31,6 +31,14 @@
       <p class="text-justify">{{ $user->biography }}</p>
     </div>
 
+    @if (!auth()->user()->isFriendWith($user))
+      <form class="flex" action="{{ route('user.friendship', $user) }}" method="post">
+        @csrf
+        <button class="button ml-auto !bg-green-300" type="submit">Send Friend Request</button>
+      </form>
+    @endif
+
+
     <section>
       {{-- Listado de actividades --}}
       <x-sections.activities :activities="$activities" />

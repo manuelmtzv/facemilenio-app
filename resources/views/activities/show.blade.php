@@ -39,7 +39,7 @@
               </article>
             @endforeach
           @else
-            <p class="text-center">No comments to show</p>
+            <p>No comments to show</p>
           @endif
         </div>
       </section>

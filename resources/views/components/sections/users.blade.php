@@ -1,7 +1,4 @@
 <div class="flex flex-col gap-4 ">
-  <h2 class="text-xl font-bold">
-    All users
-  </h2>
   @if (count($users) > 0)
     <div
          class="grid grid-cols-1 gap-2 shadow-md rounded-md p-4 bg-[#fff4e0] md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

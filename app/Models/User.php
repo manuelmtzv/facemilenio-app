@@ -78,6 +78,61 @@ class User extends Authenticatable
     return $this->hasMany(Friend::class);
   }
 
+  public function friendRequests()
+  {
+    return $this->hasMany(Friend::class, 'friend_id')
+      ->where('is_requested', true)
+      ->where('is_accepted', false)
+      ->with('user');
+  }
+
+  public function pendingFriends()
+  {
+    return $this->hasMany(Friend::class, 'friend_id')
+      ->where('is_requested', true)
+      ->where('is_accepted', false);
+  }
+
+  public function allFriends()
+  {
+    $friendIds = Friend::where('user_id', $this->id)
+      ->orWhere('friend_id', $this->id)
+      ->where('is_accepted', true)
+      ->selectRaw('CASE WHEN user_id = ' . $this->id . ' THEN friend_id ELSE user_id END as friend_id')
+      ->pluck('friend_id')
+      ->toArray();
+
+    $friendIds = array_diff(array_unique($friendIds), [$this->id]);
+
+    return User::whereIn('id', $friendIds)->get();
+  }
+
+  // public function isFriendWith(User $user)
+  // {
+  //   dd($this->friends()
+  //     ->where(function ($query) use ($user) {
+  //       $query->where('user_id', $user->id)
+  //         ->orWhere('friend_id', $user->id);
+  //     })->count());
+
+  //   return false;
+  // }
+
+  public function isFriendWith(User $user)
+  {
+    $friendship = Friend::where(function ($query) use ($user) {
+      $query->where('user_id', $this->id)
+        ->where('friend_id', $user->id);
+    })
+      ->orWhere(function ($query) use ($user) {
+        $query->where('friend_id', $this->id)
+          ->where('user_id', $user->id);
+      })
+      ->first();
+
+    return !is_null($friendship);
+  }
+
   public function activities()
   {
     return $this->hasMany(Activity::class);
