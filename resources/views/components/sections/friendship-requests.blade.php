@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-4 ">
   <h3 class="text-xl font-semibold">Friend requests:</h3>
 
-  <section class="grid grid-cols-2">
+  <section class="grid grid-cols-2 gap-4">
     @if (count($pendingFriends) > 0)
       @foreach ($pendingFriends as $pendingFriend)
         <article class="flex justify-evenly items-center gap-3 font-semibold text-center p-2 bg-[#d6e8db] rounded-sm">

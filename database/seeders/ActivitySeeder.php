@@ -17,7 +17,7 @@ class ActivitySeeder extends Seeder
     Activity::create([
       'title' => 'Saepe',
       'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro molestias error autem quidem repellendus ratione libero maxime sint hic ut? Saepe, rem harum dolores distinctio iure consequuntur fugiat consectetur eligendi.',
-      'user_id' => 1
+      'user_id' => 4
     ]);
 
     Activity::create([

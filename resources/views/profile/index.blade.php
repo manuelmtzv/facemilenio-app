@@ -15,7 +15,7 @@
             <p>Email: <span class="font-normal">{{ $user->email }}</span></p>
             @if ($user->location)
               <p>Location: <span
-                      class="font-normal">{{ $user->location->country->name . ', ' . $user->location->city->name }}</span>
+                      class="font-normal">{{ $user->location->city->name . ', ' . $user->location->country->name }}</span>
               </p>
             @endif
           </div>
